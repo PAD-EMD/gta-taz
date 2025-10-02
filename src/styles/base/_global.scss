@@ -1,0 +1,14 @@
+body {
+  font-family: var(--ff-primary);
+  font-size: var(--fs-400);
+
+  background-color: var(--clr-background);
+  color: var(--clr-text);
+  font-weight: 400;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.1;
+}
