@@ -20,6 +20,6 @@ Dans le cadre du mois de la recherche, le PAD explore la pratique du mod qui con
 - typos : sans serif `font-family: sans-serif;`
 - css grid pour le layout
 - vidéo légère mp4 pour l'index (moins de 100Mo)
-- répartition des pages 
+- répartition des pages : index - interface radio - glossaire - article
 
 
