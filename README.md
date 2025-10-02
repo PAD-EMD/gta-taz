@@ -18,7 +18,7 @@ Dans le cadre du mois de la recherche, le PAD explore la pratique du mod qui con
 
 ## Pour commencer
 - typos : sans serif `font-family: sans-serif;`
-- css grid pour le layout
+- [css grid](https://css-tricks.com/snippets/css/complete-guide-grid/) pour le layout
 - vidéo légère mp4 pour l'index (moins de 100Mo)
 - répartition des pages : index - interface radio - glossaire - article
 
