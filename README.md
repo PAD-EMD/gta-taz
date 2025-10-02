@@ -3,6 +3,7 @@ Documentation en ligne du programme de recherche Édition média design de l'ÉS
 
 # Installation
 `npm install`
+
 `npm run dev`
 
 # Objectifs du projet
@@ -14,5 +15,11 @@ Dans le cadre du mois de la recherche, le PAD explore la pratique du mod qui con
 ![wireframe](src/images/wireframe-interface.jpg)
 
 ![interface radio](src/images/maquette01.jpg)
+
+## Pour commencer
+- typos : sans serif `font-family: sans-serif;`
+- css grid pour le layout
+- vidéo légère mp4 pour l'index (moins de 100Mo)
+- répartition des pages 
 
 
