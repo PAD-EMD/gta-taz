@@ -1,0 +1,154 @@
+.videoIntro {
+    width: 100%;
+    height: auto;
+}
+
+.parent {
+    display: grid;
+    grid-template-columns: 1fr 0.3fr;
+    grid-template-rows: repeat(2, 120px) 80px 1fr; 
+    grid-column-gap: 50px; 
+    grid-row-gap: 10px; 
+    padding: 5% 5% 10% 10%;
+
+    h1 {
+        font-family: sans-serif;
+        color: black;
+        font-size: 3rem;
+        margin: 0;
+    }
+
+    p {
+        font-family: sans-serif;
+        color: black;
+        font-size: 1.3rem;
+    }
+
+    .div1 { 
+        grid-area: 1 / 1 / 2 / 2;
+    }
+
+.div2 { 
+  grid-area: 2 / 1 / 3 / 2; 
+
+  .flex-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: normal;
+    align-items: normal;
+    align-content: normal;
+    gap: 5px;
+
+    .flex-items {
+      display: block;
+      flex-grow: 0;
+      flex-shrink: 1;
+      flex-basis: auto;
+      align-self: auto;
+      order: 0;
+
+      // boucle pour générer nth-child(1) à nth-child(10)
+      @for $i from 1 through 10 {
+        &:nth-child(#{$i}) {
+          // ici tu peux ajouter des règles spécifiques
+        }
+      }
+      p {
+        background-color: black;
+        color: white;
+        padding: 10px;
+        border-radius: 10px;
+      }
+    }
+  }
+}
+
+
+    .div3 { 
+        grid-area: 3 / 1 / 4 / 2; 
+
+        p {
+            font-size: 1.5rem;
+        }
+
+    }
+
+    .div4 { 
+        grid-area: 4 / 1 / 5 / 2;
+        img {
+            width: 100%;
+            height: auto;
+            padding: 2% 0;
+        }
+
+    }
+
+    .div5 { 
+        grid-area: 4 / 2 / 5 / 3;
+
+        position: sticky;
+        top: 20px;
+        align-self: start;
+
+        img {
+            padding-bottom: 4%;
+        }
+        p {
+            font-size: .8rem;
+        } 
+    }
+}
+
+
+
+// .parent {
+//     display: grid;
+//     grid-template-columns: 1fr 0.3fr;
+//     grid-template-rows: repeat(2, 120px) 1fr;
+//     grid-column-gap: 50px;
+//     grid-row-gap: 10px;
+//     padding:5% 5% 10% 10%;
+
+//     h1 {
+//         font-family: sans-serif;
+//         color: black;
+//         font-size: 3rem;
+//         margin: 0;
+//     }
+
+//     p {
+//         font-family: sans-serif;
+//         color: black;
+//         font-size:1.3rem;
+//     }
+
+//     .div1 { 
+//         grid-area: 1 / 1 / 2 / 2;
+//     }
+//     .div2 { 
+//         grid-area: 2 / 1 / 3 / 2; 
+//     }
+//     .div3 { 
+//         grid-area: 3 / 1 / 4 / 2; 
+     
+//         img {
+//         width: 100%;
+//         height: auto;
+//         padding: 2% 0 2% 0;
+//         }
+//     }
+//     .div4 { 
+//         grid-area: 3 / 2 / 4 / 3;
+        
+//         img {
+//             padding-bottom: 4%;
+//         }
+
+//         p {
+//             font-size: .8rem;
+//         }
+//     }
+
+// }
+
