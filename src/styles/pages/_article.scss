@@ -6,7 +6,7 @@
 .parent {
     display: grid;
     grid-template-columns: 1fr 0.3fr;
-    grid-template-rows: repeat(2, 120px) 80px 1fr; 
+    grid-template-rows: 120px 100px 80px 1fr;
     grid-column-gap: 50px; 
     grid-row-gap: 10px; 
     padding: 5% 5% 10% 10%;
@@ -36,8 +36,8 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: normal;
-    align-items: flex-start;   // 👈 évite les espacements verticaux
-    align-content: flex-start; // 👈 idem
+    align-items: flex-start;   
+    align-content: flex-start; 
     gap: 5px 5px; 
 
     .flex-items {
@@ -55,10 +55,10 @@
       p {
         background-color: black;
         color: white;
-        padding: 8px 10px;   // 👈 réduit le padding vertical
+        padding: 8px 10px;   
         border-radius: 10px;
-        line-height: 1.2;    // 👈 resserre la hauteur de texte
-        margin: 0;           // 👈 enlève tout margin par défaut
+        line-height: 1.2;    
+        margin: 0;           
       }
     }
   }
