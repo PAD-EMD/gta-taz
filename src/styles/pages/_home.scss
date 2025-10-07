@@ -3,3 +3,25 @@ main {
   gap: 1.5rem;
   justify-items: center;
 }
+
+#homeContent{
+
+
+  .videoHome{
+    width: 100%;
+    height: auto;
+    position: fixed;
+    z-index: -2;
+  }
+
+
+
+  p{
+    z-index: 2;
+    font-family: sans-serif;
+    color: black;
+    font-size: 8rem;
+    margin: 0;
+    justify-self: center;
+  }
+}
