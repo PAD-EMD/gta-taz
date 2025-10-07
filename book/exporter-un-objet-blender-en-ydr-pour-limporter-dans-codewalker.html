@@ -1,0 +1,134 @@
+<p id="bkmrk-pr%C3%A9nom-nom">06 septembre 2025, Millois Juan, Berthon Lou, Ming Yuan Hsu (tous.tes les différent.es auteur.es)</p>
+<hr id="bkmrk--1">
+<p id="bkmrk-texte-intro"><strong></strong> Un tutoriel pour exporter un objet créer blender dans le but de l’importer dans la map de codewalker
+.</p>
+<p id="bkmrk-%28le-contenu-du-tuto%29"></p>
+<p id="bkmrk----">---</p>
+<h4 id="bkmrk-titre-paragraphe">Prérequis</h4>
+<p id="bkmrk-lorem-ipsum-dolor-si">
+</p><ul id="bkmrk-installer-sollumz%2C-l">
+<li>Installer Sollumz, lien du github pour le téléchargement: <a href="https://github.com/Sollumz/Sollumz"><strong>ici</strong></a></li>
+</ul>
+<h4 id="bkmrk-cr%C3%A9er-un-objet-dans-">Créer un objet dans blender
+</h4>
+
+<p id="bkmrk-lorem-ipsum-dolor-si-1"> 
+</p><p id="bkmrk-ouvrir-blender-%284.0%3F">Ouvrir Blender (4.0?)<br>
+Supprimer le cube. Supprimer les objet existant dans la scène (a+x)</p>
+<ul id="bkmrk-cr%C3%A9er-un-nouvel-obje">
+<li>Créer un nouvel objet, par exemple un cube. (il faut un objet simple avec peu de vertex)  - Installez “Sollumz”<br>
+Vous n’avez pas besoin de de dézipper le fichier<br>
+Dans Blender, aller dans Edit &gt; preferences &gt; install &gt; add on et installer le fichier zip de “Sollumz” depuis votre disque.</li>
+</ul>
+<p id="bkmrk-"><img src="https://emd.dad.ynh.fr/uploads/images/gallery/2025-10/scaled-1680-/g2blender1.png" alt="g2blender1.png"></p>
+<ul id="bkmrk-v%C3%A9rifier-que-l%27%C3%A9chel">
+<li>Vérifier que l'échelle de votre objet soit à 1 (pour cela: object mode &gt;object &gt; apply&gt; scale)</li>
+<li>Aller dans “Sollumz Tools”<br>
+Dans “Drawables”<br>
+“create drawable objects” &gt; “convert to drawable model”&gt; “convert to drawable” (cela créer un empty pour votre objet)</li>
+</ul>
+<p id="bkmrk--2"><a href="https://emd.dad.ynh.fr/uploads/images/gallery/2025-10/g2blender2.png"><img src="https://emd.dad.ynh.fr/uploads/images/gallery/2025-10/scaled-1680-/g2blender2.png" alt="g2blender2.png"></a></p>
+<ul id="bkmrk-dans-%E2%80%9Cshader-tools%E2%80%9D-">
+<li>Dans “Shader tools”<br>
+Choisir material default &gt; create shader material</li>
+<li>Dans Edit &gt; preference &gt; activer “Node wrangler”</li>
+<li>Ouvrir un onglet shader editor<br>
+Dans la partie “Diffusesampler” ajouter l’image de votre texture en fichier .dds<br>
+Cliquez sur l'icône dossier “open image” &gt; aller chercher votre image.dds</li>
+</ul>
+<p id="bkmrk--3"><a href="https://emd.dad.ynh.fr/uploads/images/gallery/2025-10/g2blender3.png"><img src="https://emd.dad.ynh.fr/uploads/images/gallery/2025-10/scaled-1680-/g2blender3.png" alt="g2blender3.png"></a></p>
+<ul id="bkmrk-aller-dans-%E2%80%9Cproperti">
+<li>Aller dans “Properties” puis dans l’onglet “Material”<br>
+Défiler jusqu’à Sollumz &gt; “Texture parameters” &gt; cocher “embeded”</li>
+<li>Dupliquer l’objet “.model”<br>
+Ensuite faites &gt; clic droit&gt; “parent”&gt; “clear and keep transformation”<br>
+Renommer l’objet dupliqué en “ _collision” exemple (Cube_collision)</li>
+<li>Dans “Sollumz tools” &gt; “Collisions”&gt; “Create bounds” &gt; cliquez sur “Convert to composite” (cela crée une empty)</li>
+</ul>
+<p id="bkmrk--4"><a href="https://emd.dad.ynh.fr/uploads/images/gallery/2025-10/g2blender4.png"><img src="https://emd.dad.ynh.fr/uploads/images/gallery/2025-10/scaled-1680-/g2blender4.png" alt="g2blender4.png"></a></p>
+<ul id="bkmrk-retirer-le-mat%C3%A9riaux">
+<li>Retirer le matériaux de votre objet “collision” (exemple cube_collison.polymesh)</li>
+<li>Dans “Sollumz Tools”<br>
+Dans “Collisions” &gt; “Create Collision Material” &gt; prendre par exemple “Vfx metal electrified” &gt; puis “Create Collision Material”</li>
+</ul>
+<p id="bkmrk--5"><a href="https://emd.dad.ynh.fr/uploads/images/gallery/2025-10/g2blender5.png"><img src="https://emd.dad.ynh.fr/uploads/images/gallery/2025-10/scaled-1680-/g2blender5.png" alt="g2blender5.png"></a></p>
+<ul id="bkmrk-pour-le-fichier-%E2%80%9C_co">
+<li>
+<p>Pour le fichier “_collision.bvh” &gt; dans object &gt; “property object” &gt;  vérifier que le “sollumz type” soit “bound geometry bvh”</p>
+</li>
+<li>
+<p>Dans “composite flag” décocher “map cover”</p>
+</li>
+<li>
+<p>Pour le “_collision.polymesh” &gt; dans object &gt; “property object”&gt; vérifier que le “sollumz type” soit “bound polymesh”</p>
+</li>
+<li>
+<p>Dans collision
+Faire “select hiérarchie”<br>
+Puis faire maj drag dans la collection de l’objet</p>
+</li>
+<li>
+<p>Bien vérifier la hiérarchie<br>
+Cube<br>
+&gt; Cube_model<br>
+&gt; Cube_collison</p>
+</li>
+<li>
+<p>Dupliquer le fichier “.model”<br>
+Le renommer en ajouter .med au bout (exemple cube_model.med)</p>
+</li>
+<li>
+<p>Sélectionner le fichier .med &gt; aller “drawable”&gt; “lod tools”<br>
+“Reference mesh” &gt; prendre le fichier .med comme modèle<br>
+Sélectionner med ou medium<br>
+Cliquez sur “generate lods”</p>
+</li>
+<li>
+<p>Supprimer le fichier med</p>
+</li>
+<li>
+<p>Renommer la collection en par exemple “test_cube”</p>
+</li>
+<li>
+<p>Sélectionnez le fichier .model</p>
+</li>
+<li>
+<p>Allez dans sollumz tools</p>
+</li>
+<li>
+<p>Allez dans archetype définition &gt; YTYPS &gt; create YTYP (+)<br>
+Renommer le fichier (exemple test_sollumz_cube)<br>
+Sélectionnez le empty</p>
+</li>
+<li>
+<p>Dans archetype<br>
+Vérifiez le type soit bien en “base”<br>
+Puis cliquez sur auto Create archetype</p>
+</li>
+</ul>
+<p id="bkmrk--6"><a href="https://emd.dad.ynh.fr/uploads/images/gallery/2025-10/g2blender6.png"><img src="https://emd.dad.ynh.fr/uploads/images/gallery/2025-10/scaled-1680-/g2blender6.png" alt="g2blender6.png"></a></p>
+<ul id="bkmrk-v%C3%A9rifiez-les-nomencl">
+<li>Vérifiez les nomenclatures et le linked object<br>
+Vérifiez que ce soit le même nom que l’empty</li>
+<li>Export ytyp.xml</li>
+<li>Exporter le ydr:</li>
+<li>Sélectionnez toute la hiérarchie</li>
+<li>Dans file &gt; export &gt; codewalker</li>
+</ul>
+<p id="bkmrk--7"><a href="https://emd.dad.ynh.fr/uploads/images/gallery/2025-10/g2blender7.png"><img src="https://emd.dad.ynh.fr/uploads/images/gallery/2025-10/scaled-1680-/g2blender7.png" alt="g2blender7.png"></a></p>
+<ul id="bkmrk-cochez-%E2%80%9Climit-to-sel">
+<li>
+<p>Cochez “limit to selected object”</p>
+</li>
+<li>
+<p>Cochez “apply parent transform”</p>
+</li>
+<li>
+<p>Toggles lods &gt; “high very low”</p>
+
+</li>
+</ul>
+<h4 id="bkmrk-ressources">Ressources</h4>
+<p id="bkmrk-r%C3%A9f%C3%A9rences-externes-">
+mnsb223, *How to Create a YDR with Embedded Collisions and Lights in Sollumz* 2.1, (https://www.youtube.com/watch?v=j8kZWnYZ\_e4](https://www.youtube.com/watch?v=j8kZWnYZ_e4), 2023
+</p>
