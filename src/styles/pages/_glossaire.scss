@@ -1,4 +1,13 @@
-#star{
-    position: relative;
-    
+.gridGlossaire {
+display: grid;
+grid-template-columns: repeat(4, 1fr);
+grid-template-rows: 1fr;
+grid-column-gap: 0px;
+grid-row-gap: 0px;
+background-color: rgb(115, 0, 255);
 }
+
+.colg1 { grid-area: 1 / 1 / 2 / 2; }
+.colg2 { grid-area: 1 / 2 / 2 / 3; }
+.colg3 { grid-area: 1 / 3 / 2 / 4; }
+.colg4 { grid-area: 1 / 4 / 2 / 5; }
