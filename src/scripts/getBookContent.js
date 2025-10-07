@@ -39,10 +39,12 @@ function generateFullHtmlPage(pageData, template) {
 	
 	// Replace main content in colt4 div
 	const contentRegex = /(<div class="colt4">)(.*?)(<div class="colt5">)/s;
+	
 	const newContent = `$1
 		<p>${pageData.description || ''}</p>
 		${pageData.html}
 	$3`;
+
 	html = html.replace(contentRegex, newContent);
 	
 	// Update meta description
@@ -58,16 +60,16 @@ function generateFullHtmlPage(pageData, template) {
 
 async function pullBook() {
 	cleanDirectory();
+	const template = loadTemplate();
 	const book = (await api.get(`/books/1`)).data;
 	const pages = book.contents;
 
 	for (const page of pages) {
-		generatePageHtml(page.id, page.slug);
-
+		await generatePageHtml(page.id, page.slug, template);
 
 		if(page.pages && page.pages.length){
 			for (const subPage of page.pages) {
-				generatePageHtml(subPage.id, subPage.slug);
+				await generatePageHtml(subPage.id, subPage.slug, template);
 			}
 		}
 	}
@@ -75,10 +77,16 @@ async function pullBook() {
   console.log('✅ Documentation exportée');
 }
 
-async function generatePageHtml(pageId, pageSlug){
+async function generatePageHtml(pageId, pageSlug, template){
 	const pageDetail = (await api.get(`/pages/${pageId}?html=true`)).data;
+	
+	// Generate full HTML page using template
+	const fullHtml = generateFullHtmlPage(pageDetail, template);
+	
 	fs.mkdirSync(dir, { recursive: true });
-	fs.writeFileSync(path.join(dir, `${pageSlug}.html`), pageDetail.html);
+	fs.writeFileSync(path.join(dir, `${pageSlug}.html`), fullHtml);
+	
+	console.log(`📄 Généré: ${pageSlug}.html`);
 }
 
 pullBook();// scripts/pullBook.js
