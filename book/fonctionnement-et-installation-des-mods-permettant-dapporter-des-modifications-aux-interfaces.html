@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Fonctionnement et installation des mods permettant d’apporter des modifications aux interfaces.</title>
+    </head>
+
+    <body>
+        <div id="app">
+            <div class="page-content" dir="auto">
+                <video class="videoIntro" autoplay muted loop>
+                    <source src="/src/videos/video-test.mp4" type="video/mp4">
+                </video>
+                
+                <div class="gridArtcile">
+                    <div class="colt1">
+                        <h1>Fonctionnement et installation des mods permettant d’apporter des modifications aux interfaces.</h1>
+                    </div>
+
+                    <div class="colt2">
+                        <div class="flex-container">
+                            <div class="flex-items">
+                                <p>Texture</p>
+                            </div>
+                            <div class="flex-items">
+                                <p>Modèle 3D</p>
+                            </div>
+                            <div class="flex-items">
+                                <p>Extension</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="colt3">
+                        <p>Anne-Sophie FOFANA, Léanne LE PREVOST, Romain NIVELLE, Sydney MAZE <br> 1er Octobre 2025</p>
+                    </div>
+
+                    <div class="colt4">
+		<p></p>
+		<!-- Importation de la police -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&amp;display=swap" rel="stylesheet" id="bkmrk-">
+<!-- Contenu -->
+<div style="font-family: 'Montserrat', sans-serif; color: #222; line-height: 1.6; max-width: 900px; margin: auto;" id="bkmrk-tuto-2-%3A-fonctionnem">
+  <h1 style="font-size: 24px; font-weight: 700; color: #000;" id="bkmrk-tuto-2-%3A-fonctionnem-1">
+    Tuto 2 : Fonctionnement et installation des mods permettant d’apporter des modifications aux interfaces.
+  </h1>
+  <p style="font-size: 14px; color: #555; margin-top: -8px;">
+    02/10/2025 — Jolaine KANDA, Ameni HAJJI, Yohan SCHMITT, Léo BONO
+  </p>
+  <h2 style="font-size: 18px; font-weight: 600; color: #C2185B; margin-top: 25px;" id="bkmrk-changements-cosm%C3%A9tiq">
+    Changements cosmétiques (“reskinnage” ou modif visuelle des éléments) :
+  </h2>
+  <p>
+    Des fichiers <b>.gxt2</b> à remplacer généralement dans les dossiers présents dans le “update”, via <b>OpenIV</b> (fonction réécriture avec <b>OpenIV Text Viewer</b>), pour modifier les textes affichés (noms des applis, des menus, des personnages, messages, etc).<br>
+    → Nécessaire de les ouvrir dans OpenIV, puis de les exporter via le Text Viewer. Il faut ensuite convertir le <b>.gxt2</b> en <b>.TXT</b> ou <b>.CSV</b>, l’éditer hors de OpenIV, puis le “replace” dans OpenIV (en gardant bien le nom et en le reconvertissant au bon format) pour injecter le fichier modifié.
+  </p>
+  <p>
+    Des fichiers <b>.ytd</b> (pour <i>Y Texture Dictionary</i>) à remplacer généralement dans les dossiers présents dans le “data”, toujours via OpenIV (ouverture des fichiers via <b>OpenIV Texture Viewer</b>, Photoshop, etc.), pour modifier les images et éléments 2D affichés (icônes des applications, des éléments de la map, du fond de la map, des fonds d’écran du téléphone, des textures des différents éléments 3D du jeu, etc).
+  </p>
+  <p>
+    Des fichiers <b>.gfx</b> et <b>.swf</b> (<i>Scaleform</i>) à décompiler en <b>.fla</b> avec un outil dédié pour pouvoir modifier les animations, positions et déclencheurs d'événement (boutons), puis à recompiler en <b>.gfx</b>/<b>.swf</b> (+ technique et instable que les autres modifications !).
+  </p>
+  <p>
+    Injection d’<b>overlay</b> (= couche graphique ou textuelle supplémentaire qui est dessinée par-dessus l’interface existante du jeu et se superpose à l’écran du joueur), plutôt que de remplacer les fichiers du jeu : écrire un script (souvent en <b>C#</b>) avec <b>ScriptHookVDotNet</b> + une librairie dédiée à l’UI (<b>LemonUI</b>, <b>NativeUI</b>).<br>
+    → Permet de “dessiner” directement sur l’écran, au-dessus du HUD du jeu, ce qui peut être plus flexible et dynamique que de modifier les fichiers du jeu (ajout et non édition de l’interface déjà existante).
+  </p>
+  <h2 style="font-size: 18px; font-weight: 600; color: #C2185B; margin-top: 25px;" id="bkmrk-changements-fonction">
+    Changements fonctionnels (ajout de code pour modifier ou ajouter des fonctionnalités dans le jeu) :
+  </h2>
+  <p>
+    Des fichiers <b>.asi</b>, <b>.dll</b> ou <b>.lua</b> (c’est-à-dire des scripts) permettent de coder une nouvelle application ou fonctionnalité et de l’intégrer dans le téléphone.<br>
+    → Nécessite de l’écriture de code directement via <b>ScriptHookV</b>, <b>ScriptHookV .NET</b>, <b>RAGE Plugin Hook</b>… avec des librairies comme 
+    <a href="https://github.com/Guad/NativeUI" style="color:#C2185B; font-weight:600; text-decoration:none;">NativeUI (GitHub)</a> — ou sa discussion sur 
+    <a href="https://gtaforums.com/topic/809284-net-nativeui/" style="color:#C2185B; font-weight:600; text-decoration:none;">GTAForums</a>, et 
+    <a href="https://github.com/LemonUIbyLemon/LemonUI" style="color:#C2185B; font-weight:600; text-decoration:none;">LemonUI (GitHub)</a>.
+  </p>
+  <h3 style="font-size: 18px; font-weight: 700; margin-top: 30px;" id="bkmrk-ressources">Ressources</h3>
+  <ul style="list-style-type: disc; margin-left: 20px;">
+    <li><b>OpenIV Team.</b> <i>OpenIV.</i> Éditeur : openiv.com. Lien web : <a href="https://openiv.com/" style="color:#C2185B;">https://openiv.com/</a>, 2024.</li>
+    <li><b>Alexander Blade.</b> <i>ScriptHookV.</i> Éditeur : dev-c.com. Lien web : <a href="https://www.dev-c.com/gtav/scripthookv/" style="color:#C2185B;">https://www.dev-c.com/gtav/scripthookv/</a>, 2023.</li>
+    <li><b>Crosire.</b> <i>ScriptHookVDotNet.</i> Éditeur : gta5-mods.com. Lien web : <a href="https://www.gta5-mods.com/tools/scripthookv-net" style="color:#C2185B;">https://www.gta5-mods.com/tools/scripthookv-net</a>, 2023.</li>
+    <li><b>Rage Plugin Hook Team.</b> <i>Rage Plugin Hook.</i> Éditeur : lcpdfr.com. Lien web : <a href="https://ragepluginhook.net/" style="color:#C2185B;">https://ragepluginhook.net/</a>, 2023.</li>
+    <li><b>Guad.</b> <i>NativeUI.</i> Éditeur : GitHub. Lien web : <a href="https://github.com/Guad/NativeUI" style="color:#C2185B;">https://github.com/Guad/NativeUI</a>, 2023.</li>
+    <li><b>LemonUI Project.</b> <i>LemonUI: Open Source UI Library.</i> Éditeur : GitHub. Lien web : <a href="https://github.com/LemonUIbyLemon/LemonUI" style="color:#C2185B;">https://github.com/LemonUIbyLemon/LemonUI</a>, 2023.</li>
+  </ul>
+</div>
+
+	<div class="colt5">
+                        <img src="/src/images/test 1.png" alt="placeholder">
+                        <img src="/src/images/test 2.png" alt="placeholder">
+                        <img src="/src/images/test 3.png" alt="placeholder">
+                        <p>Légende</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script type="module" src="/src/scripts/main.js"></script>
+    </body>
+
+</html>

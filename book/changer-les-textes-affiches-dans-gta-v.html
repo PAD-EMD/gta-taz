@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Changer les textes affichés dans GTA V</title>
+    </head>
+
+    <body>
+        <div id="app">
+            <div class="page-content" dir="auto">
+                <video class="videoIntro" autoplay muted loop>
+                    <source src="/src/videos/video-test.mp4" type="video/mp4">
+                </video>
+                
+                <div class="gridArtcile">
+                    <div class="colt1">
+                        <h1>Changer les textes affichés dans GTA V</h1>
+                    </div>
+
+                    <div class="colt2">
+                        <div class="flex-container">
+                            <div class="flex-items">
+                                <p>Texture</p>
+                            </div>
+                            <div class="flex-items">
+                                <p>Modèle 3D</p>
+                            </div>
+                            <div class="flex-items">
+                                <p>Extension</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="colt3">
+                        <p>Anne-Sophie FOFANA, Léanne LE PREVOST, Romain NIVELLE, Sydney MAZE <br> 1er Octobre 2025</p>
+                    </div>
+
+                    <div class="colt4">
+		<p></p>
+		<h1 style="font-family: 'Montserrat', sans-serif; color: #c2185b; font-weight: bold; font-size: 16px;" id="bkmrk-">
+</h1><p id="bkmrk-tuto-%3A-changer-les-t">Tuto : changer les textes affichés dans GTA V (exemple : le nom de l'application "Snapmatic", mais fonctionne avec tous les textes (dialogues, menus, policies, etc))</p>
+
+<p jolaine kanda ameni hajji yohan schmitt l bono id="bkmrk--1">
+</p><p id="bkmrk-1%29-pr%C3%A9parations-%2F-r%C3%A8">1) <strong>Préparations / règles de sécurité (lire AVANT de commencer)</strong></p>
+<ul id="bkmrk-toujours-travailler-">
+  <li>Toujours travailler dans le dossier <code>mods/</code> d’OpenIV (ne pas modifier les fichiers « vanilla » du jeu).</li>
+  <li>Important : Ferme GTA V avant toute opération (sinon ça plante).</li>
+  <li>Précaution en plus : lance OpenIV en administrateur (clic droit → Exécuter en tant qu’administrateur).</li>
+  <li>Sauvegarde le <code>.gxt2</code> original : clic droit → Export (ou Export to folder, ou faire un glisser/déposer) vers un dossier de backup.</li>
+  <li>Pas obligatoire mais, si possible, fais une copie du dossier <code>mods\update\update.rpf\...</code> entier avant de toucher quoi que ce soit.</li>
+</ul>
+<p id="bkmrk-2%29-localiser-le-fich">2) <strong>Localiser le fichier .gxt2 à modifier</strong></p>
+<p id="bkmrk-dans-openiv%2C-navigue">Dans OpenIV, navigue vers (ex. français) :</p>
+<pre id="bkmrk-mods%5Cupdate%5Cupdate.r">mods\update\update.rpf\x64\data\lang\french_rel.rpf\</pre>
+<p id="bkmrk-rep%C3%A8re-le-fichier-gl">Repère le fichier <code>global.gxt2</code> (ou celui qui contient le texte à modifier).</p>
+<p id="bkmrk-3%29-exporter-en-openf">3) <strong>Exporter en openFormats</strong></p>
+<ul id="bkmrk-clic-droit-sur-globa">
+  <li>Clic droit sur <code>global.gxt2</code> → "Export to openFormats".</li>
+  <li>Choisis un dossier de travail (ex. <code>D:\GTA_textes\global_gxt2_oxt\</code>).</li>
+  <li>Résultat : OpenIV crée un fichier texte/export (.oxt / dossier openFormats) éditable.</li>
+</ul>
+<p id="bkmrk-4%29-ouvrir-%2F-pr%C3%A9parer">4) <strong>Ouvrir / préparer le fichier pour l’édition</strong></p>
+<ul id="bkmrk-ouvre-le-fichier-exp">
+  <li>Ouvre le fichier exporté (.oxt) avec Notepad++, Bloc-notes ou VS Code.</li>
+  <li>Mets l’encodage sur <strong>UTF-8 without BOM</strong>.</li>
+  <li>Active l’affichage des retours à la ligne Windows (CRLF) si besoin.</li>
+  <li>Fais une copie de sauvegarde avant modification.</li>
+</ul>
+<p id="bkmrk-5%29-rechercher-et-mod">5) <strong>Rechercher et modifier la chaîne</strong></p>
+<ul id="bkmrk-dans-notepad%2B%2B-%3A-ctr">
+  <li>Dans Notepad++ : <kbd>Ctrl+F</kbd> → recherche la chaîne (ex. "Snapmatic").</li>
+  <li>Exemple : <code>APP_SNAPMATIC = Snapmatic</code> → change en <code>APP_SNAPMATIC = Snapchat</code>.</li>
+  <li>Ne modifie pas la clé technique (avant le "=").</li>
+  <li>Sauvegarde ton fichier .oxt modifié.</li>
+</ul>
+<p id="bkmrk-6%29-r%C3%A9importer-dans-o">6) <strong>Réimporter dans OpenIV (.oxt → .gxt2)</strong></p>
+<ul id="bkmrk-m%C3%A9thode-a-%3A-glisser%2F">
+  <li><strong>Méthode A :</strong> Glisser/déposer le fichier .oxt dans OpenIV en "Edit Mode".</li>
+  <li><strong>Méthode B :</strong> Menu "File" → "Import openFormats" → sélectionne ton .oxt.</li>
+  <li>OpenIV le reconvertit automatiquement en .gxt2. Clique sur "Save" si nécessaire.</li>
+</ul>
+<p id="bkmrk-7%29-tester-en-jeu">7) <strong>Tester en jeu</strong></p>
+<ul id="bkmrk-ferme-openiv-et-lanc">
+  <li>Ferme OpenIV et lance GTA V (solo).</li>
+  <li>Vérifie que le texte modifié apparaît bien (ex. "Snapchat" à la place de "Snapmatic").</li>
+  <li>Redémarre complètement le jeu si le texte ne se met pas à jour.</li>
+</ul>
+<p id="bkmrk-8%29-pi%C3%A8ges-courants-e">8) <strong>Pièges courants et solutions</strong></p>
+<ul id="bkmrk-erreur-d%E2%80%99import-%3A-v%C3%A9">
+  <li>Erreur d’import : vérifie que tu modifies le bon fichier <code>french_rel.rpf</code>.</li>
+  <li>Texte non affiché : la mauvaise clé a peut-être été changée.</li>
+  <li>Fichier corrompu : n’efface pas de lignes, garde la structure intacte.</li>
+  <li>Problèmes d’accents : assure-toi d’être en UTF-8 sans BOM.</li>
+  <li>Alternative : utilise <strong>VPC GXT2 Editor</strong> si tu préfères une interface graphique.</li>
+</ul>
+<p id="bkmrk-et-voil%C3%A0-%21-tu-peux-d">Et voilà ! Tu peux désormais modifier n’importe quel texte du jeu : menus, dialogues, crédits, noms d’objets, etc.</p>
+
+	<div class="colt5">
+                        <img src="/src/images/test 1.png" alt="placeholder">
+                        <img src="/src/images/test 2.png" alt="placeholder">
+                        <img src="/src/images/test 3.png" alt="placeholder">
+                        <p>Légende</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script type="module" src="/src/scripts/main.js"></script>
+    </body>
+
+</html>

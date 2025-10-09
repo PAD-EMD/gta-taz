@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Comment rendre invisible un objet sur Blender</title>
+    </head>
+
+    <body>
+        <div id="app">
+            <div class="page-content" dir="auto">
+                <video class="videoIntro" autoplay muted loop>
+                    <source src="/src/videos/video-test.mp4" type="video/mp4">
+                </video>
+                
+                <div class="gridArtcile">
+                    <div class="colt1">
+                        <h1>Comment rendre invisible un objet sur Blender</h1>
+                    </div>
+
+                    <div class="colt2">
+                        <div class="flex-container">
+                            <div class="flex-items">
+                                <p>Texture</p>
+                            </div>
+                            <div class="flex-items">
+                                <p>Modèle 3D</p>
+                            </div>
+                            <div class="flex-items">
+                                <p>Extension</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="colt3">
+                        <p>Anne-Sophie FOFANA, Léanne LE PREVOST, Romain NIVELLE, Sydney MAZE <br> 1er Octobre 2025</p>
+                    </div>
+
+                    <div class="colt4">
+		<p></p>
+		<p id="bkmrk-1er-octobre-2025%2C-an">1er octobre 2025, Anne-Sophie FOFANA, Romain NIVELLE, Sydney MAZE, Léanne LE PREVOST</p>
+<p id="bkmrk-%28image%29">(image libre d'entête qui aurais un format prédéfini plus tard)</p>
+<p id="bkmrk-"><a href="https://emd.dad.ynh.fr/uploads/images/gallery/2025-10/capture-d-ecran-2025-10-06-103433.png"><img src="https://emd.dad.ynh.fr/uploads/images/gallery/2025-10/scaled-1680-/capture-d-ecran-2025-10-06-103433.png" alt="Capture d_écran 2025-10-06 103433.png"></a></p>
+<p id="bkmrk-%28vid%C3%A9o-illustrative-">(vidéo illustrative du résultat courte à définir)</p>
+<p id="bkmrk-mots-cl%C3%A9s-%3A%C2%A0">(les mots clefs sont modifiable dans la barre de droite)</p>
+<hr id="bkmrk--1">
+<p id="bkmrk-dans-ce-tutoriel%2C-vo">Dans ce tutoriel, vous apprendrez comment modifier un objet de GTA dans Blender. Il s'agira d'importer l'objet dans Blender afin de le modifier puis de le réintégrer dans le jeu.</p>
+<p id="bkmrk-outils-n%C3%A9cessaires-%3A"><strong>Outils nécessaires : GTA V, Open IV, Code Walker, Blender + extension Sollumz</strong></p>
+<h4 id="bkmrk-etape-1-%3A-exporter-u">ETAPE 1 : Exporter un véhicule</h4>
+<p id="bkmrk--2"><a href="https://emd.dad.ynh.fr/uploads/images/gallery/2025-10/capture-d-ecran-2025-10-06-102916.png"><img src="https://emd.dad.ynh.fr/uploads/images/gallery/2025-10/scaled-1680-/capture-d-ecran-2025-10-06-102916.png" alt="Capture d_écran 2025-10-06 102916.png"></a></p>
+<ol id="bkmrk-ouvrez-codewalker-%28v">
+<li>
+<p>Ouvrez CodeWalker (voir tuto <em>"Télécharger et faire fonctionner code walker"</em>), allez dans <em>- mods - x64e.rpf - level - gta5 - vehicles.</em></p>
+</li>
+<li>
+<p>Cliquez sur le mode <em>édit</em> pour l’activer.</p>
+</li>
+<li>
+<p>Sélectionner le buffalo2.yft et buffalo2.hi.yft, clique droit cliquez “export XML”.
+<a href="https://emd.dad.ynh.fr/uploads/images/gallery/2025-10/capture-d-ecran-2025-10-06-103002.png"><img src="https://emd.dad.ynh.fr/uploads/images/gallery/2025-10/scaled-1680-/capture-d-ecran-2025-10-06-103002.png" alt="Capture d_écran 2025-10-06 103002.png"></a></p>
+</li>
+</ol>
+<p id="bkmrk-ainsi-vous-avez-vos-">Ainsi vous avez vos deux fichiers ouvrables sur blender, buffalo2.yft.xml et buffalo2.hi.yft.xml</p>
+<h4 id="bkmrk-%C3%89tape-2-%3A-importer-e">Étape 2 : Importer et modifier dans Blender du fichier hi.yft.xml</h4>
+<p id="bkmrk--3"><a href="https://emd.dad.ynh.fr/uploads/images/gallery/2025-10/capture-d-ecran-2025-10-06-103139.png"><img src="https://emd.dad.ynh.fr/uploads/images/gallery/2025-10/scaled-1680-/capture-d-ecran-2025-10-06-103139.png" alt="Capture d_écran 2025-10-06 103139.png"></a></p>
+<ol id="bkmrk-un-nouveau-fichier-g">
+<li>
+<p>Un nouveau fichier général, supprimer tout ce que ce trouve dans la scène en cliquant touche A et X.</p>
+</li>
+<li>
+<p>Cliquer sur le raccourci V, “import CodeWalker XML”, et sélectionnez  le fichier buffalo2.hi.yft.xml. et importez</p>
+</li>
+<li>
+<p>supprimer la grande boîte collisson de la voiture et sélectionner l'assemblée de la voiture en cliquant A.</p>
+</li>
+<li>
+<p>Aller ensuite dans le menu outil vertical.  Sélectionnez “Solum Tools”, dans view cliquer sur “Hide collision” et “hide shattermap”. Cela invisibilise le squelette et les éléments à ne pas supprimer. Ainsi vous pourrez supprimer à votre guise les éléments non désirés à l'exception de la roue.</p>
+</li>
+</ol>
+<p id="bkmrk-%E2%9A%A0%EF%B8%8F-pour-tous-les-obj">⚠️ Pour tous les objets que vous voulez invisibiliser, il ne faudra pas toucher au squelette et impérativement laisser au moins un polygone de l’objet ⚠️</p>
+<h4 id="bkmrk-%C3%89tape-3%3A-exporter-de">Étape 3: Exporter de Blender</h4>
+<p id="bkmrk--4"><a href="https://emd.dad.ynh.fr/uploads/images/gallery/2025-10/capture-d-ecran-2025-10-06-103209.png"><img src="https://emd.dad.ynh.fr/uploads/images/gallery/2025-10/scaled-1680-/capture-d-ecran-2025-10-06-103209.png" alt="Capture d_écran 2025-10-06 103209.png"></a></p>
+<ol id="bkmrk--s%C3%A9lectionner-toute-">
+<li>-Sélectionner toute la voiture en cliquant A.</li>
+<li>Cliquer sur le raccourci V, “ Export CodeWalker XML”, sélectionner l’emplacement et importer.</li>
+</ol>
+<h4 id="bkmrk-etape-4%3A-r%C3%A9importer-">Etape 4: Réimporter sur CodeWalker</h4>
+<p id="bkmrk--5"><a href="https://emd.dad.ynh.fr/uploads/images/gallery/2025-10/capture-d-ecran-2025-10-06-103250.png"><img src="https://emd.dad.ynh.fr/uploads/images/gallery/2025-10/scaled-1680-/capture-d-ecran-2025-10-06-103250.png" alt="Capture d_écran 2025-10-06 103250.png"></a></p>
+<p id="bkmrk--6"><a href="https://emd.dad.ynh.fr/uploads/images/gallery/2025-10/capture-d-ecran-2025-10-06-103315.png"><img src="https://emd.dad.ynh.fr/uploads/images/gallery/2025-10/scaled-1680-/capture-d-ecran-2025-10-06-103315.png" alt="Capture d_écran 2025-10-06 103315.png"></a></p>
+<ol id="bkmrk-ouvrez-codewalker%2C-a">
+<li>Ouvrez CodeWalker, allez dans -&gt; mods -&gt; x64e.rpf -&gt; level -&gt; gta5 -&gt; vehicles</li>
+<li>Cliquez sur le mode édit pour l’activer.</li>
+</ol>
+<h4 id="bkmrk-etape-5%3A-r%C3%A9p%C3%A9ter-l%E2%80%99%C3%A9">Etape 5: Répéter l’étape 2,3,4 pour le deuxième fichier buffalo.yft.xml</h4>
+<p id="bkmrk-%E2%9A%A0%EF%B8%8Fla-suppression-eff">⚠️La suppression effectuer doit être la même  pour les deux fichier.⚠️</p>
+<p id="bkmrk-et-voila-vous-pouvez"><strong>Et voila vous pouvez ouvrir GTA avec votre vehicules invisible !</strong></p>
+<p id="bkmrk-tuto-video-ici-%21">TUTO VIDEO <a href="https://drive.google.com/file/d/1iyxziX_Dr0HNVbXisBUj_jLCZHMV25Qb/view?usp=sharing">ICI !</a></p>
+<h4 id="bkmrk-ressources">Ressources</h4>
+<p id="bkmrk-r%C3%A9f%C3%A9rences-externes-">Références externes au wiki (essayer de respecter ce format dans la limite du possible)</p>
+<p id="bkmrk-auteur-nom-pr%C3%A9nom.-t">AUTEUR NOM Prénom. Titre. Edition. lien web: éditeur, année </p>
+
+	<div class="colt5">
+                        <img src="/src/images/test 1.png" alt="placeholder">
+                        <img src="/src/images/test 2.png" alt="placeholder">
+                        <img src="/src/images/test 3.png" alt="placeholder">
+                        <p>Légende</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script type="module" src="/src/scripts/main.js"></script>
+    </body>
+
+</html>
