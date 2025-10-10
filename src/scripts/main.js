@@ -27,19 +27,45 @@ function isInCenter(el) {
 
 function onScroll() {
     let imageLinkTargets = document.querySelectorAll(".link-to-image");
-	console.log(imageLinkTargets)
+    
+    if (imageLinkTargets.length === 0) return;
+    
+    // Trouver l'élément le plus proche du centre
+    let closestElement = null;
+    let smallestDistance = Infinity;
+    
+    imageLinkTargets.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+        const screenCenter = windowHeight / 2;
+        const elementCenter = rect.top + rect.height / 2;
+        const distanceToCenter = Math.abs(screenCenter - elementCenter);
         
+        if (distanceToCenter < smallestDistance) {
+            smallestDistance = distanceToCenter;
+            closestElement = el;
+        }
+    });
+    
+    // Désactiver toutes les images d'abord
     imageLinkTargets.forEach(el => {
         let targetImage = imagesContainer.querySelector("#image-" + el.dataset.imageTargetId);
-
-        if (isInCenter(el)) {
+        if (targetImage) {
+            targetImage.classList.remove('active');
+        }
+    });
+    
+    // Activer uniquement l'image correspondant à l'élément le plus proche
+    if (closestElement && smallestDistance < document.body.offsetHeight) {
+        let targetImage = imagesContainer.querySelector("#image-" + closestElement.dataset.imageTargetId);
+        
+        if (targetImage) {
             targetImage.classList.add('active');
             
-            // Scroll within the imagesContainer, not the entire window
+            // Scroll vers cette image dans le container
             const containerRect = imagesContainer.getBoundingClientRect();
             const imageRect = targetImage.getBoundingClientRect();
             
-            // Calculate the scroll position to center the image in the container
             const containerCenter = containerRect.height / 2;
             const imageCenter = imageRect.top - containerRect.top + imageRect.height / 2;
             const scrollOffset = imageCenter - containerCenter;
@@ -48,10 +74,8 @@ function onScroll() {
                 top: scrollOffset,
                 behavior: 'smooth'
             });
-        } else {
-            targetImage.classList.remove('active');
         }
-    });
+    }
 }
 
 window.onload = function() {
