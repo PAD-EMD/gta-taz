@@ -5,26 +5,21 @@
     </head>
 
     <body>
-        <div id="app">
-            <div class="page-content" dir="auto">
-                <video class="videoIntro" autoplay="" muted="" loop="">
-                    <source src="/src/videos/video-test.mp4" type="video/mp4">
-                </video>
+        <div class="left-article-content">
+            <header class="title-container">
+                <h1>Exporter un objet blender en ydr pour l’importer dans codewalker</h1>
 
-                <div class="gridArtcile">
-                    <div class="colt1 title-container">
-                        <h1>Exporter un objet blender en ydr pour l’importer dans codewalker</h1>
-                    </div>
+                <div class="details">
+                    <div class="date">08.10.2025</div>
+                    <ul class="authors">
+                        <li>Anne-Sophie FOFANA</li>
+                        <li>Romain NIVELLE</li>
+                        <li>Sydney MAZÉ</li>
+                    </ul>
+                </div>
+            </header>
 
-                    
-
-                    <div class="colt3">
-                        <!-- <p>Anne-Sophie FOFANA, Léanne LE PREVOST, Romain NIVELLE, Sydney MAZE <br> 1er Octobre 2025</p> -->
-                    </div>
-
-                    <div class="colt4">
-			<p></p>
-			<p>06 septembre 2025, Millois Juan, Berthon Lou, Ming Yuan Hsu (tous.tes les différent.es auteur.es)</p>
+            <main><p>06 septembre 2025, Millois Juan, Berthon Lou, Ming Yuan Hsu (tous.tes les différent.es auteur.es)</p>
 <hr>
 <p><strong></strong> Un tutoriel pour exporter un objet crée dans blender dans le but de l’importer dans la map de codewalker
 .</p>
@@ -44,14 +39,14 @@ Supprimer le cube. Supprimer les objet existant dans la scène (a+x)</p>
 Vous n’avez pas besoin de de dézipper le fichier<br>
 Dans Blender, aller dans Edit &gt; preferences &gt; install &gt; add on et installer le fichier zip de “Sollumz” depuis votre disque.</li>
 </ul>
-<p><img src="https://emd.dad.ynh.fr/uploads/images/gallery/2025-10/scaled-1680-/g2blender1.png" alt="g2blender1.png"></p>
+<p></p>
 <ul>
 <li>Vérifier que l'échelle de votre objet soit à 1 (pour cela: object mode &gt;object &gt; apply&gt; scale)</li>
 <li>Aller dans “Sollumz Tools”<br>
 Dans “Drawables”<br>
 “create drawable objects” &gt; “convert to drawable model”&gt; “convert to drawable” (cela créer un empty pour votre objet)</li>
 </ul>
-<p><a href="https://emd.dad.ynh.fr/uploads/images/gallery/2025-10/g2blender2.png"><img src="https://emd.dad.ynh.fr/uploads/images/gallery/2025-10/scaled-1680-/g2blender2.png" alt="g2blender2.png"></a></p>
+<p><a href="https://emd.dad.ynh.fr/uploads/images/gallery/2025-10/g2blender2.png"></a></p>
 <ul>
 <li>Dans “Shader tools”<br>
 Choisir material default &gt; create shader material</li>
@@ -60,7 +55,7 @@ Choisir material default &gt; create shader material</li>
 Dans la partie “Diffusesampler” ajouter l’image de votre texture en fichier .dds<br>
 Cliquez sur l'icône dossier “open image” &gt; aller chercher votre image.dds</li>
 </ul>
-<p><a href="https://emd.dad.ynh.fr/uploads/images/gallery/2025-10/g2blender3.png"><img src="https://emd.dad.ynh.fr/uploads/images/gallery/2025-10/scaled-1680-/g2blender3.png" alt="g2blender3.png"></a></p>
+<p><a href="https://emd.dad.ynh.fr/uploads/images/gallery/2025-10/g2blender3.png"></a></p>
 <ul>
 <li>Aller dans “Properties” puis dans l’onglet “Material”<br>
 Défiler jusqu’à Sollumz &gt; “Texture parameters” &gt; cocher “embeded”</li>
@@ -69,13 +64,13 @@ Ensuite faites &gt; clic droit&gt; “parent”&gt; “clear and keep transforma
 Renommer l’objet dupliqué en “ _collision” exemple (Cube_collision)</li>
 <li>Dans “Sollumz tools” &gt; “Collisions”&gt; “Create bounds” &gt; cliquez sur “Convert to composite” (cela crée une empty)</li>
 </ul>
-<p><a href="https://emd.dad.ynh.fr/uploads/images/gallery/2025-10/g2blender4.png"><img src="https://emd.dad.ynh.fr/uploads/images/gallery/2025-10/scaled-1680-/g2blender4.png" alt="g2blender4.png"></a></p>
+<p><a href="https://emd.dad.ynh.fr/uploads/images/gallery/2025-10/g2blender4.png"></a></p>
 <ul>
 <li>Retirer le matériaux de votre objet “collision” (exemple cube_collison.polymesh)</li>
 <li>Dans “Sollumz Tools”<br>
 Dans “Collisions” &gt; “Create Collision Material” &gt; prendre par exemple “Vfx metal electrified” &gt; puis “Create Collision Material”</li>
 </ul>
-<p><a href="https://emd.dad.ynh.fr/uploads/images/gallery/2025-10/g2blender5.png"><img src="https://emd.dad.ynh.fr/uploads/images/gallery/2025-10/scaled-1680-/g2blender5.png" alt="g2blender5.png"></a></p>
+<p><a href="https://emd.dad.ynh.fr/uploads/images/gallery/2025-10/g2blender5.png"></a></p>
 <ul>
 <li>
 <p>Pour le fichier “_collision.bvh” &gt; dans object &gt; “property object” &gt;  vérifier que le “sollumz type” soit “bound geometry bvh”</p>
@@ -130,7 +125,7 @@ Vérifiez le type soit bien en “base”<br>
 Puis cliquez sur auto Create archetype</p>
 </li>
 </ul>
-<p><a href="https://emd.dad.ynh.fr/uploads/images/gallery/2025-10/g2blender6.png"><img src="https://emd.dad.ynh.fr/uploads/images/gallery/2025-10/scaled-1680-/g2blender6.png" alt="g2blender6.png"></a></p>
+<p><a href="https://emd.dad.ynh.fr/uploads/images/gallery/2025-10/g2blender6.png"></a></p>
 <ul>
 <li>Vérifiez les nomenclatures et le linked object<br>
 Vérifiez que ce soit le même nom que l’empty</li>
@@ -139,7 +134,7 @@ Vérifiez que ce soit le même nom que l’empty</li>
 <li>Sélectionnez toute la hiérarchie</li>
 <li>Dans file &gt; export &gt; codewalker</li>
 </ul>
-<p><a href="https://emd.dad.ynh.fr/uploads/images/gallery/2025-10/g2blender7.png"><img src="https://emd.dad.ynh.fr/uploads/images/gallery/2025-10/scaled-1680-/g2blender7.png" alt="g2blender7.png"></a></p>
+<p><a href="https://emd.dad.ynh.fr/uploads/images/gallery/2025-10/g2blender7.png"></a></p>
 <ul>
 <li>
 <p>Cochez “limit to selected object”</p>
@@ -156,20 +151,11 @@ Vérifiez que ce soit le même nom que l’empty</li>
 <p>
 </p><p>mnsb223, <em>How to Create a YDR with Embedded Collisions and Lights in Sollumz 2.1</em>,  <strong>https://www.youtube.com/watch?v=j8kZWnYZ_e4</strong>, 2023</p>
 
-
-		</div>
-        
-
-                    <div class="colt5">
-                        <img src="/src/images/test 1.png" alt="placeholder">
-                        <img src="/src/images/test 2.png" alt="placeholder">
-                        <img src="/src/images/test 3.png" alt="placeholder">
-                        <p>Légende</p>
-                    </div>
-                </div>
-            </div>
+</main>
         </div>
 
+        <div class="rigth-article-content"><a data-fslightbox="gallery" href="/book/images/image-29-0-g2blender1.png" class="image" id="image-1"><img src="/book/images/image-29-0-g2blender1.png"><div class="id">1</div></a><a data-fslightbox="gallery" href="/book/images/image-29-1-g2blender2.png" class="image" id="image-2"><img src="/book/images/image-29-1-g2blender2.png"><div class="id">2</div></a><a data-fslightbox="gallery" href="/book/images/image-29-2-g2blender3.png" class="image" id="image-3"><img src="/book/images/image-29-2-g2blender3.png"><div class="id">3</div></a><a data-fslightbox="gallery" href="/book/images/image-29-3-g2blender4.png" class="image" id="image-4"><img src="/book/images/image-29-3-g2blender4.png"><div class="id">4</div></a><a data-fslightbox="gallery" href="/book/images/image-29-4-g2blender5.png" class="image" id="image-5"><img src="/book/images/image-29-4-g2blender5.png"><div class="id">5</div></a><a data-fslightbox="gallery" href="/book/images/image-29-5-g2blender6.png" class="image" id="image-6"><img src="/book/images/image-29-5-g2blender6.png"><div class="id">6</div></a><a data-fslightbox="gallery" href="/book/images/image-29-6-g2blender7.png" class="image" id="image-7"><img src="/book/images/image-29-6-g2blender7.png"><div class="id">7</div></a></div>
+        
         <script type="module" src="/src/scripts/main.js"></script>
     
 

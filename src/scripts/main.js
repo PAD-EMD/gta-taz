@@ -8,26 +8,9 @@ var lightbox = new FsLightbox();
 let scrollableContent = document.querySelector(".left-article-content");
 let imagesContainer = document.querySelector(".rigth-article-content");
 
-
-function isInCenter(el) {
-	const rect = el.getBoundingClientRect();
-	const windowHeight = window.innerHeight || document.documentElement.clientHeight;
-
-	// Position verticale du centre de l’écran
-	const screenCenter = windowHeight / 2;
-
-	// Distance entre le centre de l’élément et le centre de l’écran
-	const elementCenter = rect.top + rect.height / 2;
-	const distanceToCenter = Math.abs(screenCenter - elementCenter);
-
-	// Tu peux ajuster cette tolérance (en pixels) selon tes besoins
-	console.log(distanceToCenter)
-	return distanceToCenter < 100;
-}
+let imageLinkTargets = document.querySelectorAll(".link-to-image");
 
 function onScroll() {
-    let imageLinkTargets = document.querySelectorAll(".link-to-image");
-    
     if (imageLinkTargets.length === 0) return;
     
     // Trouver l'élément le plus proche du centre
@@ -37,7 +20,7 @@ function onScroll() {
     imageLinkTargets.forEach(el => {
         const rect = el.getBoundingClientRect();
         const windowHeight = window.innerHeight || document.documentElement.clientHeight;
-        const screenCenter = windowHeight / 2;
+        const screenCenter = windowHeight / 3;
         const elementCenter = rect.top + rect.height / 2;
         const distanceToCenter = Math.abs(screenCenter - elementCenter);
         
@@ -53,6 +36,8 @@ function onScroll() {
         if (targetImage) {
             targetImage.classList.remove('active');
         }
+
+		el.classList.remove('active');
     });
     
     // Activer uniquement l'image correspondant à l'élément le plus proche
@@ -60,6 +45,7 @@ function onScroll() {
         let targetImage = imagesContainer.querySelector("#image-" + closestElement.dataset.imageTargetId);
         
         if (targetImage) {
+			closestElement.classList.add('active');
             targetImage.classList.add('active');
             
             // Scroll vers cette image dans le container
@@ -79,6 +65,20 @@ function onScroll() {
 }
 
 window.onload = function() {
+	imageLinkTargets = document.querySelectorAll(".link-to-image");
+	for (let i = 0; i < imageLinkTargets.length; i++) {
+		const imageLinkTarget = imageLinkTargets[i];
+		
+		imageLinkTarget.innerHTML += " (" + imageLinkTarget.dataset.imageTargetId + ") "
+
+		imageLinkTarget.addEventListener('click', ()=>{
+		});
+
+
+	}
+
+
+
 	scrollableContent.addEventListener('scroll', onScroll);
 	
 	const images = document.querySelectorAll('img');
@@ -88,8 +88,8 @@ window.onload = function() {
 	let palette = [
 		[0,0,0], 
 		[100,100,100], 
-		[200,200,200], 
-		[255,255,255]
+		[200,200,200]
+		// [255,255,255]
 	]
 
 	images.forEach(img => {
