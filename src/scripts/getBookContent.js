@@ -3,6 +3,8 @@ import axios from 'axios';
 import fs from 'fs';
 import path from 'path';
 import dotenv from 'dotenv';
+
+import { JSDOM } from 'jsdom';
 dotenv.config();
 
 var dir = 'book';
@@ -31,31 +33,63 @@ function loadTemplate() {
 }
 
 function generateFullHtmlPage(pageData, template) {
-	let html = template;
+	// Créer le DOM directement avec le template
+	const dom = new JSDOM(template);
+	const doc = dom.window.document;
 	
-	// Replace title in head and h1
-	html = html.replace(/<title>.*?<\/title>/, `<title>${pageData.name}</title>`);
-	html = html.replace(/<h1>.*?<\/h1>/, `<h1>${pageData.name}</h1>`);
+	// Remplacer le title
+	const titleElement = doc.querySelector('title');
+	if (titleElement) titleElement.textContent = pageData.name;
 	
-	// Replace main content in colt4 div
-	const contentRegex = /(<div class="colt4">)(.*?)(<div class="colt5">)/s;
-	
-	const newContent = `$1
-		<p>${pageData.description || ''}</p>
-		${pageData.html}
-	$3`;
+	// Remplacer le h1
+	const h1Element = doc.querySelector('h1');
+	if (h1Element) h1Element.textContent = pageData.name;
 
-	html = html.replace(contentRegex, newContent);
+	// génère les tags
+	const tagsContainer = doc.querySelector('.tags');
 	
-	// Update meta description
-	if (pageData.description) {
-		html = html.replace(
-			/<meta name="viewport"[^>]*>/,
-			`$&\n        <meta name="description" content="${pageData.description}">`
-		);
+	const tagTemplate = doc.querySelector('.tags .flex-items');
+	tagsContainer.innerHTML = ""; // Vider le conteneur
+
+	if (tagsContainer && pageData.tags && pageData.tags.length > 0) {
+		pageData.tags.forEach(tag => {
+			// Cloner le template pour chaque tag
+			const tagElement = tagTemplate.cloneNode(true);
+			tagElement.querySelector("p").textContent = tag.name;
+			tagsContainer.appendChild(tagElement);
+		});
+	}
+	console.log("pageData.tags.length", pageData.tags.length)
+
+	if(pageData.tags.length == 0) tagsContainer.parentNode.remove();
+
+	
+	// Remplacer le contenu dans colt4
+	const colt4Element = doc.querySelector('.colt4');
+	if (colt4Element) {
+		// Nettoyer le contenu de BookStack des IDs
+		const cleanContent = pageData.html.replace(/ id="[^"]*"/g, '');
+		
+		colt4Element.innerHTML = `
+			<p>${pageData.description || ''}</p>
+			${cleanContent}
+		`;
 	}
 	
-	return html;
+	// Ajouter meta description si nécessaire
+	if (pageData.description) {
+		const head = doc.querySelector('head');
+		const metaDesc = doc.createElement('meta');
+		metaDesc.setAttribute('name', 'description');
+		metaDesc.setAttribute('content', pageData.description);
+		head.appendChild(metaDesc);
+	}
+	
+	// Supprimer tous les IDs contenant "bkmrk"
+	const elems = doc.querySelectorAll('[id*="bkmrk"]');
+	elems.forEach(element => element.removeAttribute("id"));
+	
+	return dom.serialize();
 }
 
 async function pullBook() {
@@ -79,7 +113,6 @@ async function pullBook() {
 
 async function generatePageHtml(pageId, pageSlug, template){
 	const pageDetail = (await api.get(`/pages/${pageId}?html=true`)).data;
-	
 	// Generate full HTML page using template
 	const fullHtml = generateFullHtmlPage(pageDetail, template);
 	
