@@ -17,6 +17,9 @@ var dir = 'book';
 const BOOKSTACK_API_URL = 'https://emd.dad.ynh.fr/api';
 const BOOKSTACK_TOKEN = process.env.BOOKSTACK_ID + ':' + process.env.BOOKSTACK_TOKEN;
 
+let pages = [];
+let tags = [];
+
 const api = axios.create({
 	baseURL: BOOKSTACK_API_URL,
 	headers: { Authorization: `Token ${BOOKSTACK_TOKEN}` }
@@ -54,18 +57,68 @@ async function downloadImage(imageUrl, filename) {
 	}
 }
 
-function loadTemplate() {
-	const templatePath = path.join('content', 'gabarit-tuto.html');
+function loadTemplate(fileName) {
+	const templatePath = path.join('content', fileName);
 	if (!fs.existsSync(templatePath)) {
 		throw new Error(`Template not found: ${templatePath}`);
 	}
 	return fs.readFileSync(templatePath, 'utf8');
 }
 
-async function generateFullHtmlPage(pageData, template) {
+async function generateFullIndexHtmlPage(template) {
+	const dom = new JSDOM(template);	
+	const doc = dom.window.document;
+
+	const tagsContainer = doc.querySelector(".tags-container");
+	const pagesContainer = doc.querySelector(".pages-container");
+	
+	// Supprimer les doublons basés sur le nom
+	const uniqueTags = [...new Set(tags.map(tag => tag.name))]
+		.map(name => tags.find(tag => tag.name === name));
+		
+	// Créer les éléments de tags
+	uniqueTags.forEach(tag => {
+		const tagElement = doc.createElement('a');
+		tagElement.textContent = tag.name;
+		tagElement.className = 'tag';
+		tagsContainer.appendChild(tagElement);
+	});
+
+	pages.forEach(page => {
+		const pageElement = doc.createElement('a');
+		pageElement.setAttribute('href', page.slug);
+		pageElement.innerHTML = page.title;
+
+		pageElement.className = 'page';
+		page.tags.forEach(tag => {
+			pageElement.className += ' ' + tag.name;
+		})
+
+		pagesContainer.appendChild(pageElement);
+	});
+
+
+	return dom.serialize();
+}
+
+
+async function generateFullArticleHtmlPage(pageData, template) {
 	// Créer le DOM directement avec le template
 	const dom = new JSDOM(template);
 	const doc = dom.window.document;
+
+	pages.push({
+		title: pageData.name,
+		slug: pageData.slug,
+		tags: pageData.tags,
+	})
+
+	// Ajouter les tags de la page s'ils ne sont pas déjà dans la liste globale
+	for (let i = 0; i < pageData.tags.length; i++) {
+		const pageTag = pageData.tags[i];
+		
+		tags.push(pageTag);
+	}
 
 	const tempDom = new JSDOM(pageData.html);
 	const tempDoc = tempDom.window.document;
@@ -139,15 +192,13 @@ async function generateFullHtmlPage(pageData, template) {
 	// Supprimer tous les IDs contenant "bkmrk"
 	const elems = doc.querySelectorAll('[id*="bkmrk"]');
 	elems.forEach(element => element.removeAttribute("id"));
-
-	
 	
 	return dom.serialize();
 }
 
 async function pullBook() {
 	cleanDirectory();
-	const template = loadTemplate();
+	const template = loadTemplate('gabarit-tuto.html');
 	const book = (await api.get(`/books/1`)).data;
 	const pages = book.contents;
 
@@ -161,13 +212,26 @@ async function pullBook() {
 		}
 	}
 
-  console.log('✅ Documentation exportée');
+	const inedxTemplate = loadTemplate('index.html');
+	generateIndexPage(inedxTemplate);
+
+  	console.log('✅ Documentation exportée');
+}
+
+async function generateIndexPage(template){
+	// Generate full HTML page using template
+	const fullHtml = await generateFullIndexHtmlPage(template);
+	
+	fs.mkdirSync(dir, { recursive: true });
+	fs.writeFileSync(path.join(dir, `index.html`), fullHtml);
+	
+	console.log(`📄 Généré: index.html`);
 }
 
 async function generatePageHtml(pageId, pageSlug, template){
 	const pageDetail = (await api.get(`/pages/${pageId}?html=true`)).data;
 	// Generate full HTML page using template
-	const fullHtml = await generateFullHtmlPage(pageDetail, template);
+	const fullHtml = await generateFullArticleHtmlPage(pageDetail, template);
 	
 	fs.mkdirSync(dir, { recursive: true });
 	fs.writeFileSync(path.join(dir, `${pageSlug}.html`), fullHtml);
