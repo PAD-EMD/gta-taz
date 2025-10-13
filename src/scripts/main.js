@@ -1,4 +1,5 @@
 import './../styles/style.scss';
+import 'github-markdown-css';
 
 import fslightbox from 'fslightbox';
 import DitherJS from 'ditherjs';

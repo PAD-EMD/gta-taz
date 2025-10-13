@@ -1,4 +1,6 @@
 import "./../styles/style.scss";
+import 'github-markdown-css';
+
 
 let tagElements, tagsContainer;
 let pageLinks, pagesContainer;
