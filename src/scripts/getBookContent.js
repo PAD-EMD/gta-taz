@@ -151,9 +151,12 @@ async function generateFullArticleHtmlPage(pageData, template) {
 		const filename = `image-${pageData.id}-${i}-${path.basename(originalSrc) || 'image.jpg'}`;
 		
 		// Télécharger l'image en local
-		const localImagePath = await downloadImage(originalSrc, filename);
+		let localImagePath = await downloadImage(originalSrc, filename);
 		
 		// Créer le nouvel élément avec le chemin local
+		localImagePath = localImagePath.replace("/book", "");
+		
+		console.log("localImagePath", localImagePath)
 		let newImage = generateNewImage(localImagePath, i + 1, doc);
 		image.remove();
 		imageContainer.appendChild(newImage);
