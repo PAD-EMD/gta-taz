@@ -65,6 +65,11 @@ function onScroll() {
 }
 
 window.onload = function() {
+
+    setTimeout(() => {
+        document.querySelector(".fade-layer").classList.add("hidden");
+    }, 500);
+
 	imageLinkTargets = document.querySelectorAll(".link-to-image");
 	for (let i = 0; i < imageLinkTargets.length; i++) {
 		const imageLinkTarget = imageLinkTargets[i];
@@ -73,11 +78,7 @@ window.onload = function() {
 
 		imageLinkTarget.addEventListener('click', ()=>{
 		});
-
-
 	}
-
-
 
 	scrollableContent.addEventListener('scroll', onScroll);
 	

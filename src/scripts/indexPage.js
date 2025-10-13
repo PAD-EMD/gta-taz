@@ -4,6 +4,10 @@ let tagElements, tagsContainer;
 let pageLinks, pagesContainer;
 
 window.onload = () => {
+    setTimeout(() => {
+        document.querySelector(".fade-layer").classList.add("hidden");
+    }, 500);
+
 	tagElements = document.querySelectorAll(".tag");
 	pageLinks = document.querySelectorAll(".page");
 	tagsContainer = document.querySelector(".tags-container");
@@ -45,3 +49,5 @@ function updatePageState(tag) {
 			: page.classList.remove("active");
 	});
 }
+
+

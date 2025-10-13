@@ -4,9 +4,19 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Article gabarit</title>
+        <style>
+            .fade-layer{
+                position: absolute;
+                left: 0; top: 0; right: 0; bottom: 0;
+                background-color: white;
+                z-index: 100;
+                transition: all 0.3s;
+            }
+        </style>
     </head>
 
     <body class="article-page">
+        <div class="fade-layer"></div>
         <div class="left-article-content">
             <header class="title-container">
                 <h1>Comment installer l'extension Sollumz sur Blender ?</h1>

@@ -93,7 +93,7 @@
 				pointer-events: none;
 			}
 
-			&.active {
+			&.active, &:hover {
 				canvas {
 					opacity: 0;
 				}

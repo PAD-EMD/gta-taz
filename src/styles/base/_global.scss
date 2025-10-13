@@ -45,3 +45,7 @@ h3 {
   line-height: 1.1;
 }
 
+.fade-layer.hidden{
+    opacity: 0;
+    pointer-events: none;
+}
