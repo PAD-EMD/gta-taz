@@ -1,0 +1,53 @@
+.index-page {
+    padding: 1rem;
+
+    .tags-container{
+        font-size: 2rem;
+        margin-bottom: 3rem;
+
+        .tag{
+            margin-right: 1rem;
+            text-transform: uppercase;
+            cursor: pointer;
+            border: 2px solid black;
+            border-radius: 10px;
+            padding: 0.3rem 1rem;
+            transition: all 0.3s;
+
+            &:hover{
+                background-color: black;
+                color: white;
+            }
+        }
+
+        &.tag-selected .tag{
+            opacity: 0.3;
+        }
+
+        &.tag-selected .active{
+            opacity: 1;
+        }
+    }
+
+    .pages-container{
+        font-size: 2rem;
+        line-height: 3rem;
+        max-width: 90%;
+
+        .page{
+            margin-right: 1rem;
+            text-transform: uppercase;
+            cursor: pointer;
+            color: black;
+            transition: all 0.3s;
+        }
+
+        &.tag-selected .page{
+            opacity: 0.3;
+        }
+
+        &.tag-selected .active{
+            opacity: 1;
+        }
+    }
+}

@@ -78,7 +78,7 @@ async function generateFullIndexHtmlPage(template) {
 		
 	// Créer les éléments de tags
 	uniqueTags.forEach(tag => {
-		const tagElement = doc.createElement('a');
+		const tagElement = doc.createElement('span');
 		tagElement.textContent = tag.name;
 		tagElement.className = 'tag';
 		tagsContainer.appendChild(tagElement);
