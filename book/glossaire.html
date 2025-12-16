@@ -1,35 +1,40 @@
 <!DOCTYPE html><html lang="en"><head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Glossaire</title>
-        <style>
-            .fade-layer{
-                position: absolute;
-                left: 0; top: 0; right: 0; bottom: 0;
-                background-color: white;
-                z-index: 100;
-                transition: all 0.3s;
-            }
-        </style>
-    </head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glossaire</title>
+    <style>
+        .fade-layer {
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            background-color: white;
+            z-index: 100;
+            transition: all 0.3s;
+        }
+    </style>
+</head>
 
-    <body class="article-page">
-        <div class="fade-layer"></div>
-        <div class="left-article-content">
-            <header class="title-container">
-                <h1>Glossaire</h1>
+<body class="article-page">
+    <nav>
+        <a href="/?selected=Articles">Articles</a>
+        <a href="/?selected=Tutoriels">Tutos</a>
+        <a href="/glossaire">Glossaire</a>
+    </nav>
 
-                <div class="details">
-                    <div class="date">08.10.2025</div>
-                    <ul class="authors">
-                        <li>Anne-Sophie FOFANA</li>
-                        <li>Romain NIVELLE</li>
-                        <li>Sydney MAZÉ</li>
-                    </ul>
-                </div>
-            </header>
+    <div class="fade-layer"></div>
+    <div class="left-article-content">
+        <header class="title-container">
+            <h1>Glossaire</h1>
 
-            <main><p><b> Open IV :</b> OpenIV est un éditeur polyvalent et un gestionnaire d'archives pour la version PC de Grand Theft Auto IV et des épisodes de Liberty City c’est un éditeur à tâches multiples et une archive pour GTA V sur PC. Il permet de gérer les fichiers du jeu. C’est une application à code source fermé. 
+            <div class="details">
+                
+                
+            </div>
+        </header>
+
+        <main><p><b> Open IV :</b> OpenIV est un éditeur polyvalent et un gestionnaire d'archives pour la version PC de Grand Theft Auto IV et des épisodes de Liberty City c’est un éditeur à tâches multiples et une archive pour GTA V sur PC. Il permet de gérer les fichiers du jeu. C’est une application à code source fermé. 
 OpenIV a été créé en 2008 dans le cadre d'un projet de recherche sur RAGE, dont le nom de code était «.black ». Son objectif principal était de mener des recherches sur les formats de fichiers utilisés par Rockstar.
 </p><p><b>RAGE :</b>  Un moteur de jeu vidéo propriétaire développé par l'équipe RAGE Technology Group, subdivision du studio Rockstar San Diego, appartenant au développeur et éditeur Rockstar Games. Ce moteur graphique a été réalisé en collaboration avec Rockstar North en 2006, afin de faciliter le développement des jeux Rockstar. Le premier jeu, à utiliser cette technologie, est le jeu Table Tennis. A chaque nouveau jeu publié, une nouvelle version de RAGE voit le jour. (ex : Table Tennis → RAGE 1 ; GTA IV → RAGE 2 ;  GTA V → RAGE 7 )</p>
 <p><b>Code Walker :</b> C’est une application de modification open source pour GTA. Elle permet donc aux utilisateurs de télécharger, extraire et modifier les fichiers du jeu. 
@@ -93,13 +98,13 @@ Les fichiers .swf contiennent des graphismes, sons, scripts et animations intera
 <p><b>.ASI : </b> (Assembly Script Interface) Format spécifique à GTA V et d’autres jeux Rockstar, utilisé pour les scripts et plugins chargés via ScriptHookV. Les fichiers .asi fonctionnent de manière similaire à des .dll mais sont spécialement conçus pour interagir avec le moteur du jeu (RAGE). Ils permettent d’ajouter des mods tels que des menus (trainer), scripts de gameplay, modifications du HUD, etc. Ils doivent être placés dans le répertoire principal du jeu (aux côtés de GTA5.exe).</p>
 <p><b>.LUA : </b> (Lua Script File) Fichier texte contenant du code écrit en langage Lua, un langage léger et rapide souvent utilisé pour le scripting. Dans le contexte du modding de GTA V, les fichiers .lua sont utilisés avec des frameworks tels que FiveM, RagePluginHook ou ScriptHookVDotNet + Lua Plugin. Ils servent à exécuter des scripts personnalisés : création de missions, ajout de fonctionnalités, IA, interactions ou événements spécifiques.</p>
 </li></main>
-        </div>
+    </div>
 
-        <div class="rigth-article-content"></div>
-        
-		<script type="module">
-			import "@/scripts/main.js";
-		</script>
-    
+    <div class="rigth-article-content"></div>
+
+    <script type="module">
+        import "@/scripts/main.js";
+    </script>
+
 
 </body></html>

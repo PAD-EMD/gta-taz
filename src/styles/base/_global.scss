@@ -31,7 +31,7 @@
 // }
 
 body {
-  font-family: 'Arimo', system-ui, sans-serif;
+  font-family: 'Arimo', system-ui, sans-serif !important;
   background-color: var(--clr-background);
   color: var(--clr-text);
   font-weight: 400;
@@ -47,4 +47,13 @@ h3 {
 .fade-layer.hidden{
     opacity: 0;
     pointer-events: none;
+}
+
+.markdown-body{
+  font-family: 'Arimo', system-ui, sans-serif !important;
+}
+
+.wip{
+  font-size: 1.2rem;
+  font-weight: bold;
 }

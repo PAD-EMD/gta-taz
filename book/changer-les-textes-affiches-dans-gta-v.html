@@ -1,71 +1,72 @@
 <!DOCTYPE html><html lang="en"><head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Changer les textes affichés dans GTA V</title>
-        <style>
-            .fade-layer{
-                position: absolute;
-                left: 0; top: 0; right: 0; bottom: 0;
-                background-color: white;
-                z-index: 100;
-                transition: all 0.3s;
-            }
-        </style>
-    </head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Changer les textes affichés dans GTA V</title>
+    <style>
+        .fade-layer {
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            background-color: white;
+            z-index: 100;
+            transition: all 0.3s;
+        }
+    </style>
+</head>
 
-    <body class="article-page">
-        <div class="fade-layer"></div>
-        <div class="left-article-content">
-            <header class="title-container">
-                <h1>Changer les textes affichés dans GTA V</h1>
+<body class="article-page">
+    <nav>
+        <a href="/?selected=Articles">Articles</a>
+        <a href="/?selected=Tutoriels">Tutos</a>
+        <a href="/glossaire">Glossaire</a>
+    </nav>
 
-                <div class="details">
-                    <div class="date">08.10.2025</div>
-                    <ul class="authors">
-                        <li>Anne-Sophie FOFANA</li>
-                        <li>Romain NIVELLE</li>
-                        <li>Sydney MAZÉ</li>
-                    </ul>
-                </div>
-            </header>
+    <div class="fade-layer"></div>
+    <div class="left-article-content">
+        <header class="title-container">
+            <h1>Changer les textes affichés dans GTA V</h1>
 
-            <main><h1 style="font-family: 'Montserrat', sans-serif; color: #c2185b; font-weight: bold; font-size: 16px;">
-</h1><p>Tuto : changer les textes affichés dans GTA V (exemple : le nom de l'application "Snapmatic", mais fonctionne avec tous les textes (dialogues, menus, policies, etc))</p>
+            <div class="details">
+                
+                
+            </div>
+        </header>
 
-<p jolaine="" kanda="" ameni="" hajji="" yohan="" schmitt="" l="" bono="">
-</p><p>1) <strong>Préparations / règles de sécurité (lire AVANT de commencer)</strong></p>
-<ul>
-  <li>Toujours travailler dans le dossier <code>mods/</code> d’OpenIV (ne pas modifier les fichiers « vanilla » du jeu).</li>
-  <li>Important : Ferme GTA V avant toute opération (sinon ça plante).</li>
-  <li>Précaution en plus : lance OpenIV en administrateur (clic droit → Exécuter en tant qu’administrateur).</li>
-  <li>Sauvegarde le <code>.gxt2</code> original : clic droit → Export (ou Export to folder, ou faire un glisser/déposer) vers un dossier de backup.</li>
-  <li>Pas obligatoire mais, si possible, fais une copie du dossier <code>mods\update\update.rpf\...</code> entier avant de toucher quoi que ce soit.</li>
-</ul>
-<p>2) <strong>Localiser le fichier .gxt2 à modifier</strong></p>
-<p>Dans OpenIV, navigue vers (ex. français) :</p>
-<pre>mods\update\update.rpf\x64\data\lang\french_rel.rpf\</pre>
-<p>Repère le fichier <code>global.gxt2</code> (ou celui qui contient le texte à modifier).</p>
-<p>3) <strong>Exporter en openFormats</strong></p>
-<ul>
-  <li>Clic droit sur <code>global.gxt2</code> → "Export to openFormats".</li>
-  <li>Choisis un dossier de travail (ex. <code>D:\GTA_textes\global_gxt2_oxt\</code>).</li>
-  <li>Résultat : OpenIV crée un fichier texte/export (.oxt / dossier openFormats) éditable.</li>
-</ul>
-<p>4) <strong>Ouvrir / préparer le fichier pour l’édition</strong></p>
-<ul>
-  <li>Ouvre le fichier exporté (.oxt) avec Notepad++, Bloc-notes ou VS Code.</li>
-  <li>Mets l’encodage sur <strong>UTF-8 without BOM</strong>.</li>
-  <li>Active l’affichage des retours à la ligne Windows (CRLF) si besoin.</li>
-  <li>Fais une copie de sauvegarde avant modification.</li>
-</ul>
-<p>5) <strong>Rechercher et modifier la chaîne</strong></p>
-<ul>
-  <li>Dans Notepad++ : <kbd>Ctrl+F</kbd> → recherche la chaîne (ex. "Snapmatic").</li>
-  <li>Exemple : <code>APP_SNAPMATIC = Snapmatic</code> → change en <code>APP_SNAPMATIC = Snapchat</code>.</li>
-  <li>Ne modifie pas la clé technique (avant le "=").</li>
-  <li>Sauvegarde ton fichier .oxt modifié.</li>
-</ul>
-<p>6) <strong>Réimporter dans OpenIV (.oxt → .gxt2)</strong></p>
+        <main><p>
+</p>
+<p>Ce tutoeriel xplique commeent changer les textes affichés dans GTA V (exemple : le nom de l'application "Snapmatic", mais fonctionne avec tous les textes (dialogues, menus, policies, etc))</p>
+<h2>Préparations / règles de sécurité</h2>
+<ol>
+<li>Installer <a href="https://emd.dad.ynh.fr/books/gta-sub-versions/page/installer-open-iv">OpenIV</a></li>
+<li>Important : Fermez GTA V avant toute opération</li>
+<li>Lancez <strong>OpenIV</strong> en administrateur (clic droit → Exécuter en tant qu’administrateur).</li>
+<li>Sauvegardez le <code>.gxt2</code> original : clic droit → Export (ou Export to folder, ou faire un glisser/déposer) vers un dossier de backup.</li>
+</ol>
+<h2>Localiser le fichier .gxt2 à modifier</h2>
+<p>Dans cet exemple nous allons modifier des textes français.</p>
+<ol>
+<li>Dans <strong>OpenIV</strong>, naviguez vers <code>mods\update\update.rpf\x64\data\lang\french_rel.rpf\</code> et repèrez le fichier <code>global.gxt2</code>.</li>
+<li>Exporter en openFormats</li>
+<li>Clic droit sur <code>global.gxt2</code> &gt; <code>Export to openFormats</code></li>
+<li>Choisissez un dossier de travail (ex. <code>D:\GTA_textes\global_gxt2_oxt\</code>)</li>
+<li>Résultat : <strong>OpenIV</strong> crée un fichier texte/export (.oxt / dossier openFormats) éditable.</li>
+</ol>
+<h2>Préparer le fichier pour l’édition</h2>
+<ol>
+<li>Ouvrez le fichier exporté (.oxt) avec n'importe quel éditeur de texte comme Notepad++, Bloc-notes ou VSCode.</li>
+<li>Mettez l’encodage sur <code>UTF-8 without BOM</code></li>
+<li>Activez l’affichage des retours à la ligne Windows (CRLF)</li>
+<li>Fais une copie de sauvegarde avant modification</li>
+</ol>
+<h2>Rechercher et modifier la chaîne</h2>
+<ol>
+<li><code>Ctrl+F</code> recherchez la chaîne (ex. "Snapmatic") Exemple : <code>APP_SNAPMATIC = Snapmatic</code> → change en <code>APP_SNAPMATIC = Snapchat</code></li>
+<li>Ne modifie pas la clé technique (avant le "=")</li>
+<li>Sauvegarde ton fichier .oxt modifié</li>
+</ol>
+<h2>Réimporter dans OpenIV (.oxt → .gxt2)</h2>
 <ul>
   <li><strong>Méthode A :</strong> Glisser/déposer le fichier .oxt dans OpenIV en "Edit Mode".</li>
   <li><strong>Méthode B :</strong> Menu "File" → "Import openFormats" → sélectionne ton .oxt.</li>
@@ -87,13 +88,13 @@
 </ul>
 <p>Et voilà ! Tu peux désormais modifier n’importe quel texte du jeu : menus, dialogues, crédits, noms d’objets, etc.</p>
 </main>
-        </div>
+    </div>
 
-        <div class="rigth-article-content"></div>
-        
-		<script type="module">
-			import "@/scripts/main.js";
-		</script>
-    
+    <div class="rigth-article-content"></div>
+
+    <script type="module">
+        import "@/scripts/main.js";
+    </script>
+
 
 </body></html>

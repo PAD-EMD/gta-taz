@@ -1,27 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>index gabarit</title>
-        <style>
-            .fade-layer{
-                position: absolute;
-                left: 0; top: 0; right: 0; bottom: 0;
-                background-color: white;
-                z-index: 100;
-                transition: all 0.3s;
-            }
-        </style>
-	</head>
 
-	<body class="index-page">
-        <div class="fade-layer"></div>
-		<div class="tags-container"></div>
-		<div class="pages-container"></div>
-	</body>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>index gabarit</title>
+	<style>
+		.fade-layer {
+			position: absolute;
+			left: 0;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			background-color: white;
+			z-index: 100;
+			transition: all 0.3s;
+		}
+	</style>
+</head>
 
-	<script type="module">
-		import "@/scripts/indexPage.js";
-	</script>
+<body class="index-page">
+	<nav>
+		<a href="/?selected=Articles">Articles</a>
+		<a href="/?selected=Tutoriels">Tutos</a>
+		<a href="/glossaire">Glossaire</a>
+	</nav>
+	<div class="fade-layer"></div>
+	<p class="wip">‼️ Work in Progress, le contenu de ce site et l'url sont temporaire.</p>
+
+	<div class="tags-container"></div>
+	<div class="pages-container"></div>
+</body>
+
+<script type="module">
+	import "@/scripts/indexPage.js";
+</script>
+
 </html>

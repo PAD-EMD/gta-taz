@@ -1,7 +1,6 @@
 import "./../styles/style.scss";
 import 'github-markdown-css';
 
-
 let tagElements, tagsContainer;
 let pageLinks, pagesContainer;
 
@@ -15,34 +14,44 @@ window.onload = () => {
 	tagsContainer = document.querySelector(".tags-container");
 	pagesContainer = document.querySelector(".pages-container");
 
+	//?selected=Articles
+	let params = new URLSearchParams(document.location.search);
+	let selected = params.get("selected"); // is the string "Jonathan"
+
 	tagElements.forEach((tag) => {
 		tag.addEventListener("click", (event) => {
 			let clickedTag = event.target;
-			console.log(clickedTag.classList);
-
-			if (clickedTag.classList.contains("active")) {
-				clickedTag.classList.remove("active");
-				tagsContainer.classList.remove("tag-selected");
-				pagesContainer.classList.remove("tag-selected");
-			} else {
-				tagElements.forEach((_tag) => {
-					_tag.classList.remove("active");
-				});
-
-				clickedTag.classList.add("active");
-
-				updatePageState(tag.innerHTML);
-
-				console.log("tagsContainer", tagsContainer);
-
-				if (!tagsContainer.classList.contains("tag-selected")) {
-					tagsContainer.classList.add("tag-selected");
-					pagesContainer.classList.add("tag-selected");
-				}
-			}
+			toggleTag(clickedTag)
 		});
+
+		if(selected == tag.innerHTML){
+			toggleTag(tag)
+		}
 	});
 };
+
+function toggleTag(clickedTag){
+	if (clickedTag.classList.contains("active")) {
+		clickedTag.classList.remove("active");
+		tagsContainer.classList.remove("tag-selected");
+		pagesContainer.classList.remove("tag-selected");
+	} else {
+		tagElements.forEach((_tag) => {
+			_tag.classList.remove("active");
+		});
+
+		clickedTag.classList.add("active");
+
+		updatePageState(clickedTag.innerHTML);
+
+		console.log("tagsContainer", tagsContainer);
+
+		if (!tagsContainer.classList.contains("tag-selected")) {
+			tagsContainer.classList.add("tag-selected");
+			pagesContainer.classList.add("tag-selected");
+		}
+	}
+}
 
 function updatePageState(tag) {
 	pageLinks.forEach((page) => {

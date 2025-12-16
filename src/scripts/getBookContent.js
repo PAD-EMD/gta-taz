@@ -69,33 +69,34 @@ async function generateFullIndexHtmlPage(template) {
 	const dom = new JSDOM(template);	
 	const doc = dom.window.document;
 
-	const tagsContainer = doc.querySelector(".tags-container");
-	const pagesContainer = doc.querySelector(".pages-container");
+	// const tagsContainer = doc.querySelector(".tags-container");
+	// const pagesContainer = doc.querySelector(".pages-container");
 	
-	// Supprimer les doublons basés sur le nom
-	const uniqueTags = [...new Set(tags.map(tag => tag.name))]
-		.map(name => tags.find(tag => tag.name === name));
+	// // Supprimer les doublons basés sur le nom
+	// const uniqueTags = [...new Set(tags.map(tag => tag.name))]
+	// 	.map(name => tags.find(tag => tag.name === name));
 		
-	// Créer les éléments de tags
-	uniqueTags.forEach(tag => {
-		const tagElement = doc.createElement('span');
-		tagElement.textContent = tag.name;
-		tagElement.className = 'tag';
-		tagsContainer.appendChild(tagElement);
-	});
+	// // Créer les éléments de tags
+	// uniqueTags.forEach(tag => {
+	// 	const tagElement = doc.createElement('span');
+	// 	tagElement.textContent = tag.name;
+	// 	tagElement.className = 'tag';
+	// 	tagsContainer.appendChild(tagElement);
+	// });
 
-	pages.forEach(page => {
-		const pageElement = doc.createElement('a');
-		pageElement.setAttribute('href', page.slug);
-		pageElement.innerHTML = page.title;
+	// pages.forEach(page => {
+	// 	const pageElement = doc.createElement('a');
+	// 	pageElement.setAttribute('href', page.slug + ".html");
+	// 	pageElement.setAttribute('target', '_blank');
+	// 	pageElement.innerHTML = page.title;
+	// 	pageElement.className = 'page';
 
-		pageElement.className = 'page';
-		page.tags.forEach(tag => {
-			pageElement.className += ' ' + tag.name;
-		})
+	// 	page.tags.forEach(tag => {
+	// 		pageElement.className += ' ' + tag.name;
+	// 	})
 
-		pagesContainer.appendChild(pageElement);
-	});
+	// 	pagesContainer.appendChild(pageElement);
+	// });
 
 
 	return dom.serialize();
@@ -156,16 +157,18 @@ async function generateFullArticleHtmlPage(pageData, template) {
 		// Créer le nouvel élément avec le chemin local
 		localImagePath = localImagePath.replace("/book", "");
 		
-		console.log("localImagePath", localImagePath)
 		let newImage = generateNewImage(localImagePath, i + 1, doc);
 		image.remove();
 		imageContainer.appendChild(newImage);
 	}
 
+	let eraseDate = true;
+
 
 	if(dateElement && dateElement.innerHTML){
 		let dateContainer = doc.querySelector(".title-container .details .date");
 		dateContainer.innerHTML = dateElement.innerHTML;
+		eraseDate = false;
 	}
 
 	if(dateElement && dateElement.innerHTML){
@@ -176,8 +179,12 @@ async function generateFullArticleHtmlPage(pageData, template) {
 		for (let i = 0; i < authorsArray.length; i++) {
 			const author = authorsArray[i];
 			authorsContainer.innerHTML += "<li>" + author + "</li>";
-		}
+		}		
+		eraseDate = false;
 	}
+
+	doc.querySelector(".title-container .details .date").remove();
+	doc.querySelector(".title-container .details .authors").remove();
 
 	if(doc.querySelector('main .date')) doc.querySelector('main .date').remove();
 	if(doc.querySelector('main .authors')) doc.querySelector('main .authors').remove();
@@ -210,7 +217,7 @@ async function pullBook() {
 
 		if(page.pages && page.pages.length){
 			for (const subPage of page.pages) {
-				await generatePageHtml(subPage.id, subPage.slug, template);
+				await generatePageHtml(subPage.id, subPage.slug, template, page.name);
 			}
 		}
 	}
@@ -231,8 +238,10 @@ async function generateIndexPage(template){
 	console.log(`📄 Généré: index.html`);
 }
 
-async function generatePageHtml(pageId, pageSlug, template){
+async function generatePageHtml(pageId, pageSlug, template, parentPage = null){
 	const pageDetail = (await api.get(`/pages/${pageId}?html=true`)).data;
+	console.log('pageDetail', pageDetail.tags)
+	pageDetail.tags.push({ name: parentPage, value: parentPage, order: pageDetail.tags.length });
 	// Generate full HTML page using template
 	const fullHtml = await generateFullArticleHtmlPage(pageDetail, template);
 	

@@ -1,0 +1,105 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modifier un fichier audio dans GTA</title>
+    <style>
+        .fade-layer {
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            background-color: white;
+            z-index: 100;
+            transition: all 0.3s;
+        }
+    </style>
+</head>
+
+<body class="article-page">
+    <nav>
+        <a href="/?selected=Articles">Articles</a>
+        <a href="/?selected=Tutoriels">Tutos</a>
+        <a href="/glossaire">Glossaire</a>
+    </nav>
+
+    <div class="fade-layer"></div>
+    <div class="left-article-content">
+        <header class="title-container">
+            <h1>Modifier un fichier audio dans GTA</h1>
+
+            <div class="details">
+                
+                
+            </div>
+        </header>
+
+        <main><p>
+</p>
+<p>Ce tutoriel va vous présenter commnt modifier un audio existant dans GTA V, à l'aide du logiciel <strong>Open IV</strong>. Ce tutoriel se concentre sur comment remplacer l'audio d'une arme.</p>
+<h2>Préparation</h2>
+<ol>
+<li><a href="https://emd.dad.ynh.fr/books/gta-sub-versions/page/installer-open-iv">Après avoir installé <strong>Open IV</strong></a>, vous devriez avoir un dossier nommé <code>mods</code></li>
+<li>Nus allons également avoir besoins d'un éditeur audio. Nous allons utiliser Audacity (gratuit et open source).</li>
+<li>Créez une sauvegarde <em>(important!)</em></li>
+<li>Lancez <strong>OpenIV</strong></li>
+</ol>
+<h2>Sélection (des données à remplacer)</h2>
+<ol>
+<li><span class="link-to-image" data-image-target-id="1">Naviguez jusqu'à l'audio que vous souhaitez remplacer. </span>
+C'est parfois difficile de trouver le bon, cliquez sur les différents fichiers audio, vous pouvez les reconnaître grâce au format <code>.awc</code>. Exemple: <code>x64 &gt; audio &gt; sfx &gt; WEAPONS_PLAYER.rpf &gt; pistole (ptl_50cal.awc, …)</code></li>
+</ol>
+<p><a href="https://emd.dad.ynh.fr/uploads/images/gallery/2025-10/1.png"></a></p>
+<ol start="2">
+<li><span class="link-to-image" data-image-target-id="2">Activer <code>Edit mode</code> et cliquez sur <code>copy to mods folder</code></span></li>
+</ol>
+<p><a href="https://emd.dad.ynh.fr/uploads/images/gallery/2025-10/2.png"></a></p>
+<ol>
+<li><span class="link-to-image" data-image-target-id="3">Exporter les fichiers <code>.awc</code> en cliquant sur <code>export to openFormats (.oac)</code>.</span></li>
+</ol>
+<p><a href="https://emd.dad.ynh.fr/uploads/images/gallery/2025-10/3.png"></a></p>
+<ol start="4">
+<li><span class="link-to-image" data-image-target-id="4">Ouvrez l'audio dans votre éditeur de fichier audio</span> et modifiez le comme vous le souhaitez (free sounds, générateur de voix IA, des enregistrements sonores, etc).</li>
+</ol>
+<blockquote>
+<p>Le document <code>openFormats</code> exporté se compose d'un dossier contenant un ou plusieurs fichiers <code>.wav</code> et un fichier <code>.oac</code> correspondant.</p>
+</blockquote>
+<p><a href="https://emd.dad.ynh.fr/uploads/images/gallery/2025-10/fFw4.png"></a></p>
+<ol start="5">
+<li><span class="link-to-image" data-image-target-id="5">Modifiez le fichier audio</span> mais attention, il est nécessaire que les paramètres restent les même que l'original (réglez-le sur la même longueur, fréquence d'échantillonnage : généralement 44100 Hz, important ! Mono (1 canal) et 16 bits de profondeur, volume : -12 dB à -6 dB).</li>
+<li>Exportez-le sous forme de fichier ".wav".</li>
+</ol>
+<p><a href="https://emd.dad.ynh.fr/uploads/images/gallery/2025-10/5.png"></a></p>
+<ol start="7">
+<li>Dans les fichiers exporté, <span class="link-to-image" data-image-target-id="6">remplacez les fichiers <code>.wav</code> existants</span> dans le dossier par les nouveaux (attention: certains fichiers <code>.oac</code> contiennent plusieurs audios, remplacez-les tous).</li>
+</ol>
+<blockquote>
+<p>L'idée est de modifier des fichiers existants, il est important de garder jusqu'au bout exactement les mêmes noms.</p>
+</blockquote>
+<p><a href="https://emd.dad.ynh.fr/uploads/images/gallery/2025-10/4-2.png"></a></p>
+<p>Après avoir remplacé les fichiers <code>.wav</code>, <span class="link-to-image" data-image-target-id="7">faites glisser le fichier <code>.oac</code> correspondant vers le dossier <strong>OpenIV</strong><span> allez dans <code>Nouveau</code> dans le coin gauche <code>Import openFormats</code>, choisissez votre fichier <code>.oac</code>, <code>open</code>, sélectionnez à nouveau votre fichier ".oac" dans la fenêtre qui apparaît et voilà, il est remplacé 🙂.</span></span></p>
+<p><a href="https://emd.dad.ynh.fr/uploads/images/gallery/2025-10/7.png"></a></p>
+<blockquote>
+<p>Si le format est incorrect, <span class="link-to-image" data-image-target-id="8">une erreur apparaît</span> et vous devez modifier à nouveau les paramètres correspondants</p>
+</blockquote>
+<p><a href="https://emd.dad.ynh.fr/uploads/images/gallery/2025-10/6.png"></a></p>
+<h2>Jouer GTA avec l'audio remplacé</h2>
+<ol>
+<li>Ouvrez le jeu et trouvez l'audio que vous avez remplacé. Exemple avec les audios des armes modifiées: <span class="link-to-image" data-image-target-id="9">Ouvrez la section <code>Armes</code> dans GTA</span> et recherchez l'arme portant le même nom.</li>
+</ol>
+<p><a href="https://emd.dad.ynh.fr/uploads/images/gallery/2025-10/8.png"></a></p>
+<blockquote>
+<p>En cas de difficulté pour trouver l'objet modifié, installez un "Simple Trainer" pour vous aider.
+(voir les instructions "Installation Simple Trainer")</p>
+</blockquote>
+</main>
+    </div>
+
+    <div class="rigth-article-content"><a data-fslightbox="gallery" href="/images/image-20-0-1.png" class="image" id="image-1"><img src="/images/image-20-0-1.png"><div class="id">1</div></a><a data-fslightbox="gallery" href="/images/image-20-1-2.png" class="image" id="image-2"><img src="/images/image-20-1-2.png"><div class="id">2</div></a><a data-fslightbox="gallery" href="/images/image-20-2-3.png" class="image" id="image-3"><img src="/images/image-20-2-3.png"><div class="id">3</div></a><a data-fslightbox="gallery" href="/images/image-20-3-fFw4.png" class="image" id="image-4"><img src="/images/image-20-3-fFw4.png"><div class="id">4</div></a><a data-fslightbox="gallery" href="/images/image-20-4-5.png" class="image" id="image-5"><img src="/images/image-20-4-5.png"><div class="id">5</div></a><a data-fslightbox="gallery" href="/images/image-20-5-4-2.png" class="image" id="image-6"><img src="/images/image-20-5-4-2.png"><div class="id">6</div></a><a data-fslightbox="gallery" href="/images/image-20-6-7.png" class="image" id="image-7"><img src="/images/image-20-6-7.png"><div class="id">7</div></a><a data-fslightbox="gallery" href="/images/image-20-7-6.png" class="image" id="image-8"><img src="/images/image-20-7-6.png"><div class="id">8</div></a><a data-fslightbox="gallery" href="/images/image-20-8-8.png" class="image" id="image-9"><img src="/images/image-20-8-8.png"><div class="id">9</div></a></div>
+
+    <script type="module">
+        import "@/scripts/main.js";
+    </script>
+
+
+</body></html>
