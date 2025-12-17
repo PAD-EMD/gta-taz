@@ -16,7 +16,7 @@ const camera = new THREE.PerspectiveCamera(
 	0.1,
 	1000
 );
-camera.position.set(0, 2, 5);
+camera.position.set(0, 2, 3);
 
 // Renderer
 const renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -32,6 +32,11 @@ controls.enableDamping = true;
 controls.dampingFactor = 0.05;
 controls.minDistance = 1;
 controls.maxDistance = 20;
+
+// Camera animation variables
+let targetCameraPosition = null;
+let targetControlsTarget = null;
+const animationSpeed = 0.05;
 
 // Lock vertical rotation - only horizontal rotation allowed
 controls.minPolarAngle = Math.PI / 2;
@@ -94,6 +99,7 @@ dracoLoader.setDecoderPath(
 
 const loader = new GLTFLoader();
 loader.setDRACOLoader(dracoLoader);
+
 loader.load(
 	modelUrl,
 	(gltf) => {
@@ -107,7 +113,7 @@ loader.load(
 		// Adjust camera based on model size
 		const size = box.getSize(new THREE.Vector3());
 		const maxDim = Math.max(size.x, size.y, size.z);
-		camera.position.set(0, maxDim * 0.5, maxDim * 0.5);
+		camera.position.set(0, maxDim * 0.5, maxDim * 0.3);
 		controls.target.set(0, 0, 0);
 		controls.update();
 
@@ -137,6 +143,19 @@ renderer.domElement.addEventListener("click", onMouseClick);
 // Animation loop
 function animate() {
 	requestAnimationFrame(animate);
+	
+	// Animate camera to target position
+	if (targetCameraPosition) {
+		camera.position.lerp(targetCameraPosition, animationSpeed);
+		controls.target.lerp(targetControlsTarget, animationSpeed);
+		
+		// Stop animation when close enough
+		if (camera.position.distanceTo(targetCameraPosition) < 0.01) {
+			targetCameraPosition = null;
+			targetControlsTarget = null;
+		}
+	}
+	
 	controls.update();
 	renderer.render(scene, camera);
 }
@@ -144,6 +163,17 @@ function animate() {
 animate();
 
 var raycaster = new THREE.Raycaster();
+
+function focusOnObject(object) {
+	// Calculate target position for camera (slightly away from object)
+	const objectPosition = new THREE.Vector3();
+	object.getWorldPosition(objectPosition);
+	
+	// Position camera at a nice angle from the object
+	const offset = new THREE.Vector3(2, 1, 2);
+	targetCameraPosition = objectPosition.clone().add(offset);
+	targetControlsTarget = objectPosition.clone();
+}
 
 function getSelectionneLePlusProche(position) {
 	// Mise à jour de la position du rayon à lancer.
@@ -165,26 +195,31 @@ function onMouseClick(event) {
 
 	var s = getSelectionneLePlusProche(position);
 	if (s) {
+		// Focus camera on clicked object
+		focusOnObject(s);
+		
 		if(s.name === "Target1"){
 			articleButton.classList.add("selected");
-			
+			changeActiveColor("#2A4F3E");
 			setTimeout(() => {
 				window.location.href = `/articles`;
-			}, 500);
+			}, 1500);
 		}
 		if(s.name === "Target2"){
 			tutorielsButton.classList.add("selected");
+			changeActiveColor("#0F2E84");
 			
 			setTimeout(() => {
 				window.location.href = `/tutoriels`;
-			}, 500);
+			}, 1500);
 		}
 		if(s.name === "Target3"){
 			glossaireButton.classList.add("selected");
+			changeActiveColor("#4F2A2A");
 			
 			setTimeout(() => {
 				window.location.href = `/glossaire`;
-			}, 500);
+			}, 1500);
 		}
 	} 
 }
@@ -192,3 +227,12 @@ function onMouseClick(event) {
 let articleButton = document.getElementById("articles")
 let tutorielsButton = document.getElementById("tutoriels")
 let glossaireButton = document.getElementById("glossaire")
+
+
+function changeActiveColor(color){
+	// set on local storage a value
+	localStorage.setItem("activeColor", color);
+
+	// change a global css variablke color
+	document.documentElement.style.setProperty('--active-color', color);
+}

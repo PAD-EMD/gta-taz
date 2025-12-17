@@ -13,15 +13,46 @@
             z-index: 100;
             transition: all 0.3s;
         }
+		nav {
+			text-align: right;
+			padding: 2rem;
+			position: relative;
+			z-index: 200;
+
+			a {
+				background-color: white;
+				padding: 0.3rem 1rem;
+				font-size: 1.5rem;
+				color: black;
+				font-weight: bold;
+				text-decoration: none;
+				border-radius: 50px;
+				border: solid 3px black;
+				margin-right: -1rem;
+				transition: all 0.3s;
+
+				&:hover {
+					background-color: black;
+					color: white;
+				}
+
+				transition: all 0.5s;
+				position: relative;
+			}
+
+			a:nth-child(even) {
+				border-radius: 10px !important;
+			}
+		}
     </style>
 </head>
 
 <body class="article-page">
-    <nav>
-        <a href="/?selected=Articles">Articles</a>
-        <a href="/?selected=Tutoriels">Tutos</a>
-        <a href="/glossaire">Glossaire</a>
-    </nav>
+	<nav>
+		<a href="/?selected=Articles" id="articles">Articles</a>
+		<a href="/?selected=Tutoriels" id="tutoriels">Tutos</a>
+		<a href="/glossaire" id="glossaire">Glossaire</a>
+	</nav>
 
     <div class="fade-layer"></div>
     <div class="left-article-content">
