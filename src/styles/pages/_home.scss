@@ -4,7 +4,6 @@
 //   justify-items: center;
 // }
 
-
 // main p {
 
 // }
@@ -24,9 +23,13 @@
 //   }
 // }
 
+.info {
+	position: absolute;
+	right: 1rem;
+	bottom: 1rem;
+}
 
-.info{
-    position: absolute;
-    right: 1rem;
-    bottom: 1rem;
+#app {
+	position: absolute;
+	top: 0;
 }

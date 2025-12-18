@@ -1,0 +1,19 @@
+.tippy-box{
+    border: var(--active-color) 3px dotted !important;
+    background-color: white !important;
+    color: var(--active-color) !important;
+    border-radius: 0 !important;
+}
+.tippy-backdrop{
+    // border: red 10px solid !important;
+    opacity: 0 !important;
+}
+.tippy-arrow{
+    // border: red 10px solid !important;
+    opacity: 0 !important;
+}
+
+.tippy-tooltip.tomato-theme {
+  background-color: tomato;
+  color: yellow;
+}

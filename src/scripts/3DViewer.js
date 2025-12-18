@@ -38,9 +38,9 @@ let targetCameraPosition = null;
 let targetControlsTarget = null;
 const animationSpeed = 0.05;
 
-// Lock vertical rotation - only horizontal rotation allowed
-controls.minPolarAngle = Math.PI / 2;
-controls.maxPolarAngle = Math.PI / 2;
+// Allow some vertical rotation to see from above
+controls.minPolarAngle = Math.PI / 3; // 45 degrees from top
+controls.maxPolarAngle = Math.PI / 2; // Horizontal
 
 // Lights
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
@@ -113,7 +113,7 @@ loader.load(
 		// Adjust camera based on model size
 		const size = box.getSize(new THREE.Vector3());
 		const maxDim = Math.max(size.x, size.y, size.z);
-		camera.position.set(0, maxDim * 0.5, maxDim * 0.3);
+		camera.position.set(0, maxDim * 0.5, maxDim * 0.5);
 		controls.target.set(0, 0, 0);
 		controls.update();
 

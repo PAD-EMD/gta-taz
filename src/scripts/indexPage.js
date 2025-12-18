@@ -1,13 +1,15 @@
 import "./../styles/style.scss";
-import 'github-markdown-css';
+import "github-markdown-css";
+import tippy from "tippy.js";
+import "tippy.js/dist/tippy.css"; // optional for styling
 
 let tagElements, tagsContainer;
 let pageLinks, pagesContainer;
 
 window.onload = () => {
-    setTimeout(() => {
-        document.querySelector(".fade-layer").classList.add("hidden");
-    }, 500);
+	setTimeout(() => {
+		document.querySelector(".fade-layer").classList.add("hidden");
+	}, 500);
 
 	tagElements = document.querySelectorAll(".tag");
 	pageLinks = document.querySelectorAll(".page");
@@ -21,16 +23,16 @@ window.onload = () => {
 	tagElements.forEach((tag) => {
 		tag.addEventListener("click", (event) => {
 			let clickedTag = event.target;
-			toggleTag(clickedTag)
+			toggleTag(clickedTag);
 		});
 
-		if(selected == tag.innerHTML){
-			toggleTag(tag)
+		if (selected == tag.innerHTML) {
+			toggleTag(tag);
 		}
 	});
 };
 
-function toggleTag(clickedTag){
+function toggleTag(clickedTag) {
 	if (clickedTag.classList.contains("active")) {
 		clickedTag.classList.remove("active");
 		tagsContainer.classList.remove("tag-selected");
@@ -61,4 +63,6 @@ function updatePageState(tag) {
 	});
 }
 
-
+tippy(".info", {
+	content: `Subversion est un projet mené par le PAD EMD de l\'ESAD d\'orléans. Pour plus de détails, consultez la section <a href="ok">À propos</a>.`,
+});

@@ -69,34 +69,41 @@ async function generateFullIndexHtmlPage(template) {
 	const dom = new JSDOM(template);	
 	const doc = dom.window.document;
 
-	// const tagsContainer = doc.querySelector(".tags-container");
-	// const pagesContainer = doc.querySelector(".pages-container");
+	return dom.serialize();
+}
+
+async function generateFullArticlesHtmlPage(template) {
+	const dom = new JSDOM(template);	
+	const doc = dom.window.document;
+
+	const tagsContainer = doc.querySelector(".tags-container");
+	const pagesContainer = doc.querySelector(".pages-container");
 	
-	// // Supprimer les doublons basés sur le nom
-	// const uniqueTags = [...new Set(tags.map(tag => tag.name))]
-	// 	.map(name => tags.find(tag => tag.name === name));
+	// Supprimer les doublons basés sur le nom
+	const uniqueTags = [...new Set(tags.map(tag => tag.name))]
+		.map(name => tags.find(tag => tag.name === name));
 		
-	// // Créer les éléments de tags
-	// uniqueTags.forEach(tag => {
-	// 	const tagElement = doc.createElement('span');
-	// 	tagElement.textContent = tag.name;
-	// 	tagElement.className = 'tag';
-	// 	tagsContainer.appendChild(tagElement);
-	// });
+	// Créer les éléments de tags
+	uniqueTags.forEach(tag => {
+		const tagElement = doc.createElement('span');
+		tagElement.textContent = tag.name;
+		tagElement.className = 'tag';
+		tagsContainer.appendChild(tagElement);
+	});
 
-	// pages.forEach(page => {
-	// 	const pageElement = doc.createElement('a');
-	// 	pageElement.setAttribute('href', page.slug + ".html");
-	// 	pageElement.setAttribute('target', '_blank');
-	// 	pageElement.innerHTML = page.title;
-	// 	pageElement.className = 'page';
+	pages.forEach(page => {
+		const pageElement = doc.createElement('a');
+		pageElement.setAttribute('href', page.slug + ".html");
+		pageElement.setAttribute('target', '_blank');
+		pageElement.innerHTML = page.title;
+		pageElement.className = 'page';
 
-	// 	page.tags.forEach(tag => {
-	// 		pageElement.className += ' ' + tag.name;
-	// 	})
+		page.tags.forEach(tag => {
+			pageElement.className += ' ' + tag.name;
+		})
 
-	// 	pagesContainer.appendChild(pageElement);
-	// });
+		pagesContainer.appendChild(pageElement);
+	});
 
 
 	return dom.serialize();
@@ -225,6 +232,9 @@ async function pullBook() {
 	const inedxTemplate = loadTemplate('index.html');
 	generateIndexPage(inedxTemplate);
 
+	const articlesTemplate = loadTemplate('articles.html');
+	generateArticlesPage(articlesTemplate);
+
   	console.log('✅ Documentation exportée');
 }
 
@@ -236,6 +246,26 @@ async function generateIndexPage(template){
 	fs.writeFileSync(path.join(dir, `index.html`), fullHtml);
 	
 	console.log(`📄 Généré: index.html`);
+}
+
+async function generateArticlesPage(template){
+	// Generate full HTML page using template
+	const fullHtml = await generateFullIndexHtmlPage(template);
+	
+	fs.mkdirSync(dir, { recursive: true });
+	fs.writeFileSync(path.join(dir, `articles.html`), fullHtml);
+	
+	console.log(`📄 Généré: articles.html`);
+}
+
+async function generateTutorielsPage(template){
+	// Generate full HTML page using template
+	const fullHtml = await generateFullIndexHtmlPage(template);
+	
+	fs.mkdirSync(dir, { recursive: true });
+	fs.writeFileSync(path.join(dir, `articles.html`), fullHtml);
+	
+	console.log(`📄 Généré: articles.html`);
 }
 
 async function generatePageHtml(pageId, pageSlug, template, parentPage = null){

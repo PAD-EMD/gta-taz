@@ -3,6 +3,7 @@
 
     .tags-container{
         font-size: 2rem;
+        margin-top: 3rem;
         margin-bottom: 3rem;
         width: 100%;
         display: flex;
@@ -10,18 +11,19 @@
         flex-wrap: wrap;
 
         .tag{
-            margin-right: 1rem;
             margin-bottom: 1rem;
             text-transform: uppercase;
             cursor: pointer;
-            border: 2px solid black;
-            border-radius: 10px;
-            padding: 0.3rem 1rem;
+            margin-right: 0.8rem;
+            padding-left: 0;
+            padding-bottom: 0.3rem;
             transition: all 0.3s;
+            font-weight: bold;
+            color: var(--active-color);
+            border-bottom: 3px solid transparent;
 
             &:hover{
-                background-color: black;
-                color: white;
+                border-bottom: 3px solid var(--active-color);
             }
         }
 
@@ -37,14 +39,31 @@
     .pages-container{
         font-size: 2rem;
         line-height: 3rem;
-        max-width: 90%;
+        display: flex;
+        flex-direction: column;
+        max-height: 50vh;
+        flex-wrap: wrap;
+        overflow-y: auto;
+        width: calc(100vw - 1rem);
 
         .page{
             margin-right: 1rem;
-            text-transform: uppercase;
             cursor: pointer;
-            color: black;
+            color: var(--text-color);
             transition: all 0.3s;
+            text-decoration: none;
+            font-size: 1.6rem;
+            width: 30%;
+            line-height: 30px;
+            margin-bottom: 20px;
+        }
+
+        .page:before {
+            content: "•";
+            display: block;
+            float: left;
+            padding-right: 20px;
+            color: var(--text-color);
         }
 
         &.tag-selected .page{
