@@ -1,169 +1,107 @@
-<!doctype html>
-<html lang="fr">
-    <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Glossaire</title>
-    </head>
-<body>
-  <header class="side-nav">
-    <nav>
-      <ul>
-        <li class="star">★<span>home</span></li>
-        <li class="star">★<span>catalogue</span></li>
-        <li class="star">★<span>glossaire</span></li>
-      </ul>
-    </nav>
-  </header>
+<!DOCTYPE html>
+<html lang="en">
 
-  <main class="container">
-    <h1 class="page-title">GLOSSAIRE</h1>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>index gabarit</title>
+	<style>
+		html {
+			font-family: sans-serif;
+		}
 
-    <section class="alphabet-grid" aria-label="Glossaire alphabétique">
+		body {
+			padding: 1rem !important;
+			margin: 0 !important;
+		}
 
-      <article class="alpha-col">
-        <h2 class="alpha-letter">A</h2>
-        <div class="items">
-          <div class="item mid">abri</div>
-          <div class="item black">abricot</div>
-          <div class="item grey">arborescance</div>
-        </div>
-      </article>
+		.fade-layer {
+			position: absolute;
+			left: 0;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			background-color: white;
+			z-index: 100;
+			transition: all 0.3s;
+		}
 
-      <article class="alpha-col">
-        <h2 class="alpha-letter">B</h2>
-        <div class="items">
-          <div class="item black">banalité</div>
-          <div class="item light">bourse</div>
-        </div>
-      </article>
+		header {
+			display: flex;
+			justify-content: space-between;
+			width: 100%;
+		}
 
-      <article class="alpha-col">
-        <h2 class="alpha-letter">C</h2>
-        <div class="items">
-          <div class="item black">caput</div>
-          <div class="item light">civitas</div>
-          <div class="item mid">civitates</div>
-        </div>
-      </article>
+		header .title {
+			display: flex;
+			align-items: center;
+			gap: 1rem;
+			position: relative;
+			z-index: 200;
 
-      <article class="alpha-col">
-        <h2 class="alpha-letter">D</h2>
-        <div class="items">
-          <div class="item light">déterminant</div>
-          <div class="item mid">développement</div>
-          <div class="item black">démarche</div>
-        </div>
-      </article>
+			h1 {
+				opacity: 0;
+			}
+		}
 
-      <article class="alpha-col">
-        <h2 class="alpha-letter">E</h2>
-        <div class="items">
-          <div class="item black">Eleutheropolim</div>
-          <div class="item light">échantillon</div>
-          <div class="item mid">exemple</div>
-        </div>
-      </article>
+		nav {
+			text-align: right;
+			position: relative;
+			z-index: 200;
+			width: 50%;
 
-      <article class="alpha-col">
-        <h2 class="alpha-letter">H</h2>
-        <div class="items">
-          <div class="item mid">honorem</div>
-        </div>
-      </article>
+			a {
+				background-color: white;
+				padding: 0.3rem 1rem;
+				font-size: 1.5rem;
+				color: var(--active-color);
+				font-weight: bold;
+				text-decoration: none;
+				border-radius: 50px;
+				border: solid 4px var(--active-color);
+				margin-right: -0.3rem;
+				transition: all 0.3s;
+				transition: all 0.5s;
+				position: relative;
+			}
 
-      <article class="alpha-col">
-        <h2 class="alpha-letter">I</h2>
-        <div class="items">
-          <div class="item light">inusitato</div>
-          <div class="item mid">itidemque</div>
-          <div class="item grey">iusserim</div>
-        </div>
-      </article>
+			a:hover {
+				/* background-color: black;
+					color: white; */
+				cursor: pointer;
+			}
 
-      <article class="alpha-col">
-        <h2 class="alpha-letter">J</h2>
-        <div class="items">
-          <div class="item grey">juste</div>
-          <div class="item mid">juge</div>
-        </div>
-      </article>
+			svg {
+				position: relative;
+			}
 
-      <article class="alpha-col">
-        <h2 class="alpha-letter">L</h2>
-        <div class="items">
-          <div class="item light">liberté</div>
-          <div class="item dark">lex</div>
-          <div class="item black">lien</div>
-        </div>
-      </article>
+			a:nth-child(even) {
+				border-radius: 10px !important;
+			}
+		}
+	</style>
+</head>
 
-      <article class="alpha-col">
-        <h2 class="alpha-letter">M</h2>
-        <div class="items">
-          <div class="item light">mot 1</div>
-          <div class="item black">mots clé</div>
-          <div class="item mid">mot 3</div>
-        </div>
-      </article>
+<body class="index-page">
+	<div class="fade-layer"></div>
 
-      <article class="alpha-col">
-        <h2 class="alpha-letter">N</h2>
-        <div class="items">
-          <div class="item grey">nature</div>
-          <div class="item mid">nom</div>
-        </div>
-      </article>
+	<div class="content-container"></div>
 
-      <article class="alpha-col">
-        <h2 class="alpha-letter">O</h2>
-        <div class="items">
-          <div class="item mid">objet</div>
-          <div class="item dark">optimum</div>
-        </div>
-      </article>
+	<script type="module">
+		import "@/scripts/indexPage.js";
+	</script>
 
-      <article class="alpha-col">
-        <h2 class="alpha-letter">P</h2>
-        <div class="items">
-          <div class="item light">projet</div>
-          <div class="item mid">plan</div>
-          <div class="item black">prototype</div>
-          <div class="item grey">post</div>
-        </div>
-      </article>
-
-      <article class="alpha-col">
-        <h2 class="alpha-letter">R</h2>
-        <div class="items">
-          <div class="item light">recal</div>
-          <div class="item black">recalcitrantes</div>
-          <div class="item mid">récit</div>
-        </div>
-      </article>
+	<script>
+		// get active color from local storage and set it to css variable
+		const activeColor =
+			localStorage.getItem("activeColor") || "#0F2E84";
+		document.documentElement.style.setProperty(
+			"--active-color",
+			activeColor
+		);
+	</script>
 
 
-      <article class="alpha-col">
-        <h2 class="alpha-letter">S</h2>
-        <div class="items">
-          <div class="item mid">savoir</div>
-          <div class="item dark">sens</div>
-        </div>
-      </article>
-
-      <article class="alpha-col">
-        <h2 class="alpha-letter">T</h2>
-        <div class="items">
-          <div class="item black">terme important</div>
-          <div class="item mid">trait</div>
-        </div>
-      </article>
-
-    </section>
 </body>
-<script type="module" src="/src/scripts/main.js"></script>
 
 </html>
-
-
-

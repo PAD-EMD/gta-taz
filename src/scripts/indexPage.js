@@ -2,6 +2,12 @@ import "./../styles/style.scss";
 import "github-markdown-css";
 import tippy from "tippy.js";
 import "tippy.js/dist/tippy.css"; // optional for styling
+import 'simplebar'; // or "import SimpleBar from 'simplebar';" if you want to use it manually.
+import 'simplebar/dist/simplebar.css';
+
+// You will need a ResizeObserver polyfill for browsers that don't support it! (iOS Safari, Edge, ...)
+import ResizeObserver from 'resize-observer-polyfill';
+window.ResizeObserver = ResizeObserver;
 
 let tagElements, tagsContainer;
 let pageLinks, pagesContainer;

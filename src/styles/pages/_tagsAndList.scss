@@ -40,22 +40,20 @@
         font-size: 2rem;
         line-height: 3rem;
         display: flex;
-        flex-direction: column;
-        max-height: 50vh;
-        flex-wrap: wrap;
+        flex-direction: row;
+        flex-wrap: wrap;    
         overflow-y: auto;
-        width: calc(100vw - 1rem);
 
         .page{
-            margin-right: 1rem;
+            flex: 0 0 calc(33.333% - 1rem);
             cursor: pointer;
             color: var(--text-color);
             transition: all 0.3s;
             text-decoration: none;
             font-size: 1.6rem;
-            width: 30%;
             line-height: 30px;
             margin-bottom: 20px;
+            margin-right: 1rem;
         }
 
         .page:before {
