@@ -9,22 +9,23 @@ export async function generateIndexHtmlPage(template) {
 	const doc = dom.window.document;
 
 	const headerSnippet = loadSnippet('nav.html');
-	
-	if (headerSnippet) {
-		console.log('headerSnippet =', headerSnippet)
-		const body = doc.querySelector('body');
+	const body = doc.querySelector('body');
+	body.innerHTML = headerSnippet + body.innerHTML;
 
-		if (body) {
-			body.innerHTML = headerSnippet + body.innerHTML;
-		}
-	}
-	
 	return dom.serialize();
 }
 
 export async function generateTutorielsPage(template) {
 	const dom = new JSDOM(template);
 	const doc = dom.window.document;
+
+	const headerSnippet = loadSnippet('nav.html');
+	const body = doc.querySelector('body');
+	body.innerHTML = headerSnippet + body.innerHTML;
+
+	const headSnippet = loadSnippet('sub-page-style.html');
+	const head = doc.querySelector('head');
+	head.innerHTML = head.innerHTML + headSnippet;
 
 	const tagsContainer = doc.querySelector(".tags-container");
 	const pagesContainer = doc.querySelector(".pages-container");
@@ -38,6 +39,7 @@ export async function generateTutorielsPage(template) {
 		tagElement.className = 'tag';
 		tagsContainer.appendChild(tagElement);
 	});
+
 	console.log('state.pages.length =', state.pages.length)
 	state.pages.forEach(page => {
 		const pageElement = doc.createElement('a');
@@ -55,11 +57,25 @@ export async function generateTutorielsPage(template) {
 
 	return dom.serialize();
 }
-export async function generateGlossairePageAndWrite(template) {
+export async function generateGlossairePage(template) {
 	const dom = new JSDOM(template);
 	const doc = dom.window.document;
+	// get glossaire page in state.pages
+	const headerSnippet = loadSnippet('nav.html');
+	const body = doc.querySelector('body');
+	body.innerHTML = headerSnippet + body.innerHTML;
 
+	const headSnippet = loadSnippet('sub-page-style.html');
+	const head = doc.querySelector('head');
+	head.innerHTML = head.innerHTML + headSnippet;
 
+	const glossairePages = state.pages.filter(page => page.title == "Glossaire");
+	
+	const glossaireContainer = doc.querySelector(".glossaire-container");
+
+	glossaireContainer.innerHTML = 'ok cool';
+
+	console.log('glossairePages =', glossairePages);
 	return dom.serialize();
 }
 
@@ -68,23 +84,24 @@ export async function generateFullArticleHtmlPage(pageData, template) {
 		virtualConsole: new (await import('jsdom')).VirtualConsole()
 	});
 	const doc = dom.window.document;
-
+	
 	const headerSnippet = loadSnippet('nav.html');
+	const body = doc.querySelector('body');
+	body.innerHTML = headerSnippet + body.innerHTML;
 
-	if (headerSnippet) {
-		const body = doc.querySelector('body');
-		if (body) {
-			const headerDiv = doc.createElement('div');
-			headerDiv.innerHTML = headerSnippet;
-			body.insertBefore(headerDiv.firstChild, body.firstChild);
-		}
-	}
+	const headSnippet = loadSnippet('sub-page-style.html');
+	const head = doc.querySelector('head');
+	head.innerHTML = head.innerHTML + headSnippet;
 
 	state.pages.push({
 		title: pageData.name,
 		slug: pageData.slug,
 		tags: pageData.tags,
 	})
+
+	if(pageData.name === "Glossaire"){
+		state.pages[state.pages.length -1].content = pageData.html;
+	}
 
 	for (let i = 0; i < pageData.tags.length; i++) {
 		const pageTag = pageData.tags[i];

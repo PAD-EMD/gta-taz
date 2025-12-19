@@ -1,0 +1,75 @@
+<style>
+    html {
+        font-family: sans-serif;
+    }
+
+    body {
+        padding: 1rem !important;
+        margin: 0 !important;
+    }
+
+    .fade-layer {
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        background-color: white;
+        z-index: 100;
+        transition: all 0.3s;
+    }
+
+    header {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    header .title {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        position: relative;
+        z-index: 200;
+
+        h1 {
+            opacity: 0;
+        }
+    }
+
+    nav {
+        text-align: right;
+        position: relative;
+        z-index: 200;
+        width: 50%;
+
+        a {
+            background-color: white;
+            padding: 0.3rem 1rem;
+            font-size: 1.5rem;
+            color: var(--active-color);
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 50px;
+            border: solid 4px var(--active-color);
+            margin-right: -0.3rem;
+            transition: all 0.3s;
+            transition: all 0.5s;
+            position: relative;
+        }
+
+        a:hover {
+            /* background-color: black;
+                color: white; */
+            cursor: pointer;
+        }
+
+        svg {
+            position: relative;
+        }
+
+        a:nth-child(even) {
+            border-radius: 10px !important;
+        }
+    }
+</style>
