@@ -41,7 +41,6 @@ export async function generateTutorielsPage(template) {
 		tagsContainer.appendChild(tagElement);
 	});
 
-	console.log('state.pages.length =', state.pages.length)
 	state.pages.forEach(page => {
 		const pageElement = doc.createElement('a');
 		pageElement.setAttribute('href', page.slug + ".html");
@@ -57,6 +56,23 @@ export async function generateTutorielsPage(template) {
 	});
 
 	return dom.serialize();
+}
+
+export async function generateArticlesPage(template) {
+	const dom = new JSDOM(template);
+	const doc = dom.window.document;
+	
+	// get glossaire page in state.pages
+	const headerSnippet = loadSnippet('nav.html');
+	const body = doc.querySelector('body');
+	body.innerHTML = headerSnippet + body.innerHTML;
+
+	const headSnippet = loadSnippet('sub-page-style.html');
+	const head = doc.querySelector('head');
+	head.innerHTML = head.innerHTML + headSnippet;
+
+	return dom.serialize();
+
 }
 
 export async function generateGlossairePage(template) {
@@ -124,6 +140,13 @@ export async function generateGlossairePage(template) {
 	return dom.serialize();
 }
 
+
+/**
+ * Generate a html page for all article and tutoriel pages
+ * @param {*} pageData 
+ * @param {*} template 
+ * @returns 
+ */
 export async function generateFullArticleHtmlPage(pageData, template) {
 	const dom = new JSDOM(template, {
 		virtualConsole: new (await import('jsdom')).VirtualConsole()
@@ -142,7 +165,10 @@ export async function generateFullArticleHtmlPage(pageData, template) {
 		title: pageData.name,
 		slug: pageData.slug,
 		tags: pageData.tags,
+		parent: pageData.parent || null,
 	})
+
+	console.log('pageData.parent =', pageData.parent)
 
 	if(pageData.name === "Glossaire"){
 		state.pages[state.pages.length -1].content = pageData.html;

@@ -1,6 +1,6 @@
 import { fetchBook } from './api.js';
 import { cleanDirectory, loadTemplate } from './fileUtils.js';
-import { generateIndexPage, generateArticlesPage, generatePageHtml, generateTutorielsPageAndWrite, generateGlossairePageAndWrite } from './pageGenerators.js';
+import { generateIndexPage, generateArticlesPageAndWrite, generatePageHtml, generateTutorielsPageAndWrite, generateGlossairePageAndWrite } from './pageGenerators.js';
 
 async function pullBook() {
 
@@ -12,27 +12,26 @@ async function pullBook() {
 	const pages = book.contents;
 
 	await generatePageHtml(7, "glossaire", template);
+	const glossaireTemplate = loadTemplate('glossaire.html');
+	generateGlossairePageAndWrite(glossaireTemplate);
 
-	// for (const page of pages) {
-	// 	await generatePageHtml(page.id, page.slug, template);
-	// 	console.log('page.id =', page.id)
-	// 	console.log('page.slug =', page.slug)
-	// 	if(page.pages && page.pages.length){
-	// 		for (const subPage of page.pages) {
-	// 			await generatePageHtml(subPage.id, subPage.slug, template, page.name);
-	// 		}
-	// 	}
-	// }
+	for (const page of pages) {
+		if(page.id === 7) continue; // Glossaire déjà généré
+		await generatePageHtml(page.id, page.slug, template);
+		
+		if(page.pages && page.pages.length){
+			for (const subPage of page.pages) {
+				await generatePageHtml(subPage.id, subPage.slug, template, page.name);
+			}
+		}
+	}
 
 	// const indexTemplate = loadTemplate('index.html');
 	// generateIndexPage(indexTemplate);
 
-	// const articlesTemplate = loadTemplate('articles.html');
-	// // generateArticlesPage(articlesTemplate);
+	const articlesTemplate = loadTemplate('articles.html');
+	generateArticlesPageAndWrite(articlesTemplate);
 	// generateTutorielsPageAndWrite(articlesTemplate);
-
-	const glossaireTemplate = loadTemplate('glossaire.html');
-	generateGlossairePageAndWrite(glossaireTemplate);
 
 	console.log('✅ Documentation exportée');
 }

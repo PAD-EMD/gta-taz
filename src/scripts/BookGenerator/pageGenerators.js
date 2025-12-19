@@ -1,14 +1,14 @@
 import { fetchPage } from './api.js';
 import { writeHtmlFile } from './fileUtils.js';
-import { generateIndexHtmlPage, generateFullArticleHtmlPage, generateTutorielsPage, generateGlossairePage } from './htmlGenerators.js';
+import { generateIndexHtmlPage, generateFullArticleHtmlPage, generateTutorielsPage, generateGlossairePage, generateArticlesPage } from './htmlGenerators.js';
 
 export async function generateIndexPage(template) {
 	const fullHtml = await generateIndexHtmlPage(template);
 	writeHtmlFile('index.html', fullHtml);
 }
 
-export async function generateArticlesPage(template) {
-	const fullHtml = await generateIndexHtmlPage(template);
+export async function generateArticlesPageAndWrite(template) {
+	const fullHtml = await generateArticlesPage(template);
 	writeHtmlFile('articles.html', fullHtml);
 }
 
