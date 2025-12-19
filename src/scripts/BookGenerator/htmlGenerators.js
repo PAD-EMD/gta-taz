@@ -1,5 +1,6 @@
 import path from 'path';
 import { JSDOM } from 'jsdom';
+import fs from 'fs';
 import { state, DOWNLOAD_IMAGES } from './config.js';
 import { downloadImage, generateNewImage } from './imageUtils.js';
 import { loadSnippet } from './fileUtils.js';
@@ -57,9 +58,11 @@ export async function generateTutorielsPage(template) {
 
 	return dom.serialize();
 }
+
 export async function generateGlossairePage(template) {
 	const dom = new JSDOM(template);
 	const doc = dom.window.document;
+
 	// get glossaire page in state.pages
 	const headerSnippet = loadSnippet('nav.html');
 	const body = doc.querySelector('body');
@@ -73,9 +76,51 @@ export async function generateGlossairePage(template) {
 	
 	const glossaireContainer = doc.querySelector(".glossaire-container");
 
-	glossaireContainer.innerHTML = 'ok cool';
+	const tempDom = new JSDOM(glossairePages[0].content);
+	const paragraphs = tempDom.window.document.querySelectorAll('p');
 
-	console.log('glossairePages =', glossairePages);
+	glossaireContainer.innerHTML = '';
+
+	const ul = doc.createElement('ul');
+	ul.className = 'glossaire-list';
+
+	let glossaireArray = [];
+
+	paragraphs.forEach(paragraph => {
+		if (paragraph.textContent.trim()) {
+			const li = doc.createElement('li');
+			li.className = 'glossaire-term';
+			li.innerHTML = paragraph.innerHTML;
+			
+			const strongTags = li.querySelectorAll('strong');
+			
+			let glossaireElement = {
+				term: strongTags[0] ? strongTags[0].textContent : '',
+				definition: li.textContent.replace(strongTags[0] ? strongTags[0].textContent : '', '').trim()
+			};
+
+			glossaireArray.push(glossaireElement);
+
+			strongTags.forEach(strong => {
+				const br = doc.createElement('br');
+				strong.parentNode.insertBefore(br, strong.nextSibling);
+			});
+
+			
+
+			
+			ul.appendChild(li);
+		}
+	});
+
+
+	glossaireArray.sort((a, b) => a.term.localeCompare(b.term));
+
+	fs.writeFileSync('./book/glossaire.json', JSON.stringify(glossaireArray, null, 2), 'utf-8');
+
+
+	glossaireContainer.appendChild(ul);
+
 	return dom.serialize();
 }
 

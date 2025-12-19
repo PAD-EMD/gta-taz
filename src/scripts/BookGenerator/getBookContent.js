@@ -11,22 +11,25 @@ async function pullBook() {
 	const book = await fetchBook(1);
 	const pages = book.contents;
 
-	for (const page of pages) {
-		await generatePageHtml(page.id, page.slug, template);
+	await generatePageHtml(7, "glossaire", template);
 
-		if(page.pages && page.pages.length){
-			for (const subPage of page.pages) {
-				await generatePageHtml(subPage.id, subPage.slug, template, page.name);
-			}
-		}
-	}
+	// for (const page of pages) {
+	// 	await generatePageHtml(page.id, page.slug, template);
+	// 	console.log('page.id =', page.id)
+	// 	console.log('page.slug =', page.slug)
+	// 	if(page.pages && page.pages.length){
+	// 		for (const subPage of page.pages) {
+	// 			await generatePageHtml(subPage.id, subPage.slug, template, page.name);
+	// 		}
+	// 	}
+	// }
 
-	const indexTemplate = loadTemplate('index.html');
-	generateIndexPage(indexTemplate);
+	// const indexTemplate = loadTemplate('index.html');
+	// generateIndexPage(indexTemplate);
 
-	const articlesTemplate = loadTemplate('articles.html');
-	// generateArticlesPage(articlesTemplate);
-	generateTutorielsPageAndWrite(articlesTemplate);
+	// const articlesTemplate = loadTemplate('articles.html');
+	// // generateArticlesPage(articlesTemplate);
+	// generateTutorielsPageAndWrite(articlesTemplate);
 
 	const glossaireTemplate = loadTemplate('glossaire.html');
 	generateGlossairePageAndWrite(glossaireTemplate);

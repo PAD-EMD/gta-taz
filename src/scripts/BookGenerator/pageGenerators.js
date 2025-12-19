@@ -16,6 +16,7 @@ export async function generateTutorielsPageAndWrite(template) {
 	const fullHtml = await generateTutorielsPage(template);
 	writeHtmlFile('tutoriels.html', fullHtml);
 }
+
 export async function generateGlossairePageAndWrite(template) {
 	const fullHtml = await generateGlossairePage(template);
 	writeHtmlFile('glossaire.html', fullHtml);

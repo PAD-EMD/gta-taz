@@ -1,0 +1,138 @@
+[
+  {
+    "term": ".ASI :",
+    "definition": "(Assembly Script Interface) Format spécifique à GTA V et d’autres jeux Rockstar, utilisé pour les scripts et plugins chargés via ScriptHookV. Les fichiers .asi fonctionnent de manière similaire à des .dll mais sont spécialement conçus pour interagir avec le moteur du jeu (RAGE). Ils permettent d’ajouter des mods tels que des menus (trainer), scripts de gameplay, modifications du HUD, etc. Ils doivent être placés dans le répertoire principal du jeu (aux côtés de GTA5.exe)."
+  },
+  {
+    "term": ".DLL :",
+    "definition": "(Dynamic Link Library) Fichier bibliothèque dynamique utilisé par Windows et de nombreux jeux pour charger du code externe. Il contient des fonctions, classes ou ressources qui peuvent être appelées par un programme sans être intégrées directement à son exécutable. Dans le modding de GTA V, les .dll sont souvent des plugins utilisés par des loaders comme ScriptHookV, permettant d’ajouter de nouvelles fonctionnalités ou scripts au jeu."
+  },
+  {
+    "term": ".DSS :",
+    "definition": "Sauvegarde de configuration créée par DiskStation Manager (DSM), un système d'exploitation web inclus avec les périphériques de stockage en réseau (NAS) Synology.Les fichiers DSS permettent de restaurer la configuration d'un système. Il contient les paramètres d'un système, notamment les utilisateurs, les groupes, les dossiers partagés, le groupe de travail, le domaine, les mots de passe et les méthodes de partage de fichiers."
+  },
+  {
+    "term": ".EXE :",
+    "definition": "Programme exécutable fonctionnant sous Microsoft Windows. Il contient une application, comme notepad.exe ou msedge.exe , qui s'ouvre lorsque vous double-cliquez dessus. Certains fichiers EXE, comme les installateurs téléchargés sur Internet, installent un programme sur votre ordinateur Windows dès leur ouverture."
+  },
+  {
+    "term": ".GFX :",
+    "definition": "(Scaleform Graphic File) Fichier Flash compilé utilisé par Rockstar pour les interfaces utilisateur du jeu (menus, HUD, tableaux de bord, écrans d’ordinateur, etc.). Les .gfx sont des fichiers .swf compilés avec Scaleform, un moteur d’interface développé par Autodesk basé sur Flash. Ils contiennent souvent des éléments visuels (textures vectorielles, animations, textes, polices). Ces fichiers peuvent être ouverts et modifiés via JPEXS Free Flash Decompiler (FFDec) et/ou Adobe Animate CS6, après exportation depuis OpenIV."
+  },
+  {
+    "term": ".GXT2 :",
+    "definition": "(Game Text File V2) Fichier utilisé par GTA V (et d’autres jeux Rockstar) pour stocker les textes affichés en jeu : dialogues, noms de lieux, messages du HUD, menus, sous-titres, etc. Il s’agit d’un format binaire compressé, successeur du format GXT utilisé dans les anciens GTA. Les fichiers .gxt2 peuvent être ouverts, édités et réimportés à l’aide d’outils comme OpenIV, GXT2 Editor, ou même des éditeurs de texte en les exportant en .openFormats, permettant ainsi de modifier le texte du jeu ou d’en traduire le contenu."
+  },
+  {
+    "term": ".LUA :",
+    "definition": "(Lua Script File) Fichier texte contenant du code écrit en langage Lua, un langage léger et rapide souvent utilisé pour le scripting. Dans le contexte du modding de GTA V, les fichiers .lua sont utilisés avec des frameworks tels que FiveM, RagePluginHook ou ScriptHookVDotNet + Lua Plugin. Ils servent à exécuter des scripts personnalisés : création de missions, ajout de fonctionnalités, IA, interactions ou événements spécifiques."
+  },
+  {
+    "term": ".MTL :",
+    "definition": "Fichier de paramètres de matériaux utilisé par les applications d'édition d'objets 3D, telles qu'Adobe Photoshop et Autodesk Maya. Il est stocké avec un fichier.obj et décrit comment un programme doit appliquer des textures à cet objet."
+  },
+  {
+    "term": ".OBJ :",
+    "definition": "Un fichier OBJ est un format d'image 3D standard, exportable et lisible par divers logiciels de retouche d'images 3D. Il contient un objet tridimensionnel, incluant ses coordonnées 3D, ses textures, ses faces polygonales et d'autres informations. Les fichiers OBJ peuvent également contenir des références à un ou plusieurs fichiers .MTL contenant les données d'ombrage de surface de l'objet."
+  },
+  {
+    "term": ".RPF :",
+    "definition": "(RAGE Package File) Fichier de GTA V qui regroupe plusieurs fichiers du jeu, comme des modèles 3D (.YFT), des textures (.YTD), des sons, des scripts, etc"
+  },
+  {
+    "term": ".SWF :",
+    "definition": "(Shockwave Flash) Format de fichier d’animation vectorielle créé par Adobe (anciennement Macromedia).\nLes fichiers .swf contiennent des graphismes, sons, scripts et animations interactives. Ils sont à la base du format utilisé par Scaleform, qui compile ensuite en .gfx pour GTA V. Dans le modding, on les utilise pour modifier ou créer des interfaces, changer des polices ou ajouter des animations personnalisées avant conversion en .gfx."
+  },
+  {
+    "term": ".XML :",
+    "definition": "(Extensible Markup Language) Il contient un ensemble de données formatées destinées à être traitées par un site web, une application web ou un logiciel. Les fichiers XML peuvent être considérés comme des bases de données textuelles."
+  },
+  {
+    "term": ".YBN / .YBD :",
+    "definition": "(Y Bound Node / Y Bound Dictionary) Deux formats pour les fichiers de collision utilisés dans GTA V. Ces fichiers décrivent la structure de collision physique (formes, boîtes, sphères, maillages simplifiés) pour les objets du jeu, afin que le moteur de jeu sache comment gérer les collisions avec les éléments."
+  },
+  {
+    "term": ".YCD :",
+    "definition": "(Rockstar Animation Clip Dictionary) Un fichier d'animation utilisé par un jeu vidéo Rockstar Games, tel que GTA V ( ou Red Dead Redemption 2 ). Il contient des données compressées et chiffrées utilisées pour animer un objet du jeu."
+  },
+  {
+    "term": ".YDD :",
+    "definition": "(Drawable Dictionary) Un modèle 3D de GTA V qui contient une caractéristique du personnage, comme une tête, un trait du visage, des cheveux ou un vêtement. Les fichiers YDD sont similaires aux fichiers .YDR, qui contiennent des objets 3D"
+  },
+  {
+    "term": ".YDR :",
+    "definition": "(Drawable) Un model 3D de GTA V qui contient un objet, tel qu'un bâtiment, un accessoire ou une arme, qui apparaît dans le jeu. Les fichiers YDR sont compressés avec la compression Zlib et peuvent être décompressés pour accéder au modèle 3D détexturé (fichier .odr) et aux textures qui y sont stockées."
+  },
+  {
+    "term": ".YFT :",
+    "definition": "(Y-File Texture ou parfois juste \"fragment\" de modèle) Un fichier YFT est un modèle 3D utilisé par GTA V. Il contient un fragment d’un objet plus grand, comme un véhicule par exemple, rendu avec un ou plusieurs niveaux de détail. GTA V stocke ses fichiers YFT dans vehicles.rpf. Ces fichiers définissent la géométrie, les textures et parfois les animations associées à ces objets."
+  },
+  {
+    "term": ".YLD :",
+    "definition": "(Y Cloth Dictionary ou Y Lightweight/LOD Dynamic) Un fichier qui définit la physique pour certains éléments du personnage ou accessoires, notamment les vêtements, capes, cheveux, ou accessoires qui doivent réagir de façon dynamique (mouvement, vent, gravité) → (mesh physics / cloth simulation). Lié à un fichier .ydd du même nom, le .yld ajoute le comportement physique dynamique pour les parties du modèle."
+  },
+  {
+    "term": ".YMAP :",
+    "definition": "(Y platform Map Data) Un fichier de données de carte utilisé par GTA V qui contient les placements (instances) d’objets (props, bâtiments, végétation, routes, etc.) dans le monde du jeu. Chaque instance fait référence à un archetype (défini dans un fichier .ytyp)."
+  },
+  {
+    "term": ".YMT :",
+    "definition": "(Compiled Meta Table) Un fichier de métadonnées utilisé par les jeux vidéo développés avec RAGE (Rockstar Advanced Game Engine). Il contient du texte au format XML, compressé et chiffré. Les fichiers YMT définissent divers attributs du jeu, tels que les informations sur les personnages, les données des objets, des comportements, paramètres divers (véhicules, PNJ, IA, etc.)."
+  },
+  {
+    "term": ".YND :",
+    "definition": "(Ymap Navigation Data) Fichiers de chemin de trafic de GTA V, c’est-à-dire les fichiers du jeu qui déterminent la navigation des pnj, c’est à dire les chemins empruntables pour dire où et comment les voitures ou piétons peuvent se déplacer sur une certaine zone de la carte."
+  },
+  {
+    "term": ".YTD :",
+    "definition": "(Texture Dictionary) Un fichier de texture de GTA V qui stocke les textures des objets apparaissant pendant le jeu, comme les bâtiments."
+  },
+  {
+    "term": "“.black” :",
+    "definition": "Nom de code du projet de recherche privé du groupe ayant créé le programme Open IV en 2008. C’est aussi un programme basé sur le même noyau qu’Open IV et qui permet d’explorer les jeux basés sur le moteur RAGE. Le programme restera privé et n’est pas destiné au public."
+  },
+  {
+    "term": "Add-ons :",
+    "definition": "C’est une extension d’un jeu vidéo ou d’un logiciel. Il permet d’inclure du nouveau contenu et peut être considéré comme une amélioration du logiciel."
+  },
+  {
+    "term": "archetype :",
+    "definition": "Une structure de données qui décrit toutes les propriétés nécessaires pour qu’un objet fonctionne dans le jeu,  Il peut représenter : Un prop (lampadaire, caisse, barrière…), Une voiture statique ou un véhicule généré par le jeu, Un intérieur (MLO) ou un élément de décor, Un élément dynamique comme un tissu ou un objet physique"
+  },
+  {
+    "term": "Assets :",
+    "definition": "Ce mot est utilisé pour désigner n’importe quel élément distinct d’un jeu vidéo qu’il soit graphique, sonore ou textuel. Par exemple un personnage, un véhicule, un bâtiment, une voix ou encore un accessoire."
+  },
+  {
+    "term": "Code Walker :",
+    "definition": "C’est une application de modification open source pour GTA. Elle permet donc aux utilisateurs de télécharger, extraire et modifier les fichiers du jeu.\nL’application est divisée en plusieurs parties : Visionneuse de carte 3D, Affichage modèle 3D avec possibilité de les modifier, Marqueurs : placer des marqueurs à des points précis du monde, Sélection : Les utilisateurs peuvent visualiser, sélectionner et interagir avec une variété d'aspects du monde du jeu en mode sélection , Options concernant le comportement de l'application, de la caméra et des commandes , Options contrôlant les modes de rendu et d’affichage , Commandes d'éclairage et d'ombrage, Animations"
+  },
+  {
+    "term": "Code Walker RPF Explorer :",
+    "definition": "application CodeWalker distincte qui permet l'exploration générale et l'édition des fichiers de jeu de GTA V à travers un gestionnaire de fichiers."
+  },
+  {
+    "term": "Open IV :",
+    "definition": "OpenIV est un éditeur polyvalent et un gestionnaire d'archives pour la version PC de Grand Theft Auto IV et des épisodes de Liberty City c’est un éditeur à tâches multiples et une archive pour GTA V sur PC. Il permet de gérer les fichiers du jeu. C’est une application à code source fermé.\nOpenIV a été créé en 2008 dans le cadre d'un projet de recherche sur RAGE, dont le nom de code était «.black ». Son objectif principal était de mener des recherches sur les formats de fichiers utilisés par Rockstar."
+  },
+  {
+    "term": "RAGE :",
+    "definition": "Un moteur de jeu vidéo propriétaire développé par l'équipe RAGE Technology Group, subdivision du studio Rockstar San Diego, appartenant au développeur et éditeur Rockstar Games. Ce moteur graphique a été réalisé en collaboration avec Rockstar North en 2006, afin de faciliter le développement des jeux Rockstar. Le premier jeu, à utiliser cette technologie, est le jeu Table Tennis. A chaque nouveau jeu publié, une nouvelle version de RAGE voit le jour. (ex : Table Tennis → RAGE 1 ; GTA IV → RAGE 2 ;  GTA V → RAGE 7 )"
+  },
+  {
+    "term": "Shader :",
+    "definition": "Les shaders (nuanceur) paramètrent une partie du processus de rendu via la carte graphique ou un moteur de rendu, ce sont des programmes intégrés au jeu vidéo qui définissent comment l’aspect des éléments du jeu interagissent avec leur environnement : couleur, brillance, transparence, relief, réaction à la lumière."
+  },
+  {
+    "term": "Sollumz :",
+    "definition": "C’est un “add-on” développé par Skylumz, Colton Fox et alexguirre\npour importer, exporter et créer des ressources GTA V au format XML pour Codewalker. Ce qui permet par exemple d’ouvrir des “assets” de GTA V sur Blender afin de les modifier pour les réinjecter dans le jeu par la suite."
+  },
+  {
+    "term": "Textures :",
+    "definition": "Éléments graphiques qui permettent de donner un aspect réel ou particulier à des compositions. Elles permettent de rajouter des caractéristiques aux différents modèles 3D."
+  },
+  {
+    "term": "YTYP :",
+    "definition": "(Y map types, archetype) Un fichier utilisé pour stocker une structure qui contient plusieurs archetypes, c'est-à-dire un fichier contenant des informations sur le modèle, les collisions et la texture. C'est le  fichier de configuration permettant de définir les propriétés des objets. Donc en soit le fichier qui dit au jeu quoi peut être placé, comment il est défini, avec quelles propriétés, mais pas nécessairement où (la position est souvent dans le fichier .ymap). Donc, un fichier .ytyp contient plusieurs archetypes, chacun avec : name → Nom unique de l’archetype, flags → Attributs binaires (ex. solide, destructible, interactif…), lodDist → Distance de rendu LOD (niveau de détail), bbMin / bbMax → Bounding box (boîte englobante) pour collisions ou optimisation, hdTextureDist → Distance à laquelle la texture haute résolution est chargé, drawableDict → Lien vers le modèle visuel (.ydd), physicsDict → Lien vers la collision ou physique (.ybn/.ybd), clipDict → Lien vers les données de clipping, si nécessaire, children → Pour les objets composés (ex. intérieurs multi-salles)"
+  }
+]
