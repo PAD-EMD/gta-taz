@@ -32,5 +32,5 @@ export function loadSnippet(fileName) {
 export function writeHtmlFile(fileName, content) {
 	fs.mkdirSync(DIR, { recursive: true });
 	fs.writeFileSync(path.join(DIR, fileName), content);
-	console.log(`📄 Généré: ${fileName}`);
+	// console.log(`📄 Généré: ${fileName}`);
 }

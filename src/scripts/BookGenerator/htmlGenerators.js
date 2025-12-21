@@ -175,13 +175,15 @@ export async function generateFullArticleHtmlPage(pageData, template, parentPage
 	});
 	const doc = dom.window.document;
 	
-	const headerSnippet = loadSnippet('nav-small.html');
-	const body = doc.querySelector('body');
-	body.innerHTML = headerSnippet + body.innerHTML;
-
+	const navSnippet = loadSnippet('nav-small.html');
 	const headSnippet = loadSnippet('sub-page-style.html');
+
 	const head = doc.querySelector('head');
-	head.innerHTML = head.innerHTML + headSnippet;
+	head.innerHTML =  head.innerHTML + navSnippet + headSnippet;
+
+	const footerSnippet = loadSnippet('footer.html');
+	const body = doc.querySelector('body');
+	body.innerHTML = body.innerHTML + footerSnippet;
 
 	state.pages.push({
 		title: pageData.name,
@@ -204,6 +206,9 @@ export async function generateFullArticleHtmlPage(pageData, template, parentPage
 	
 	const authorsElement = tempDoc.querySelector('.authors');
 	const dateElement = tempDoc.querySelector('.date');
+
+	if(pageData.name === "Du monde ouvert au théâtre collectif : incarner et créer dans GTA V")
+		console.log('authorsElement =', authorsElement.innerHTML)
 
 	const leftContent = doc.querySelector('.left-article-content');
 	if (leftContent) leftContent.setAttribute('data-simplebar', '');
@@ -263,7 +268,7 @@ export async function generateFullArticleHtmlPage(pageData, template, parentPage
 		eraseDate = false;
 	}
 
-	if(dateElement && dateElement.innerHTML){
+	if(authorsElement && authorsElement.innerHTML){
 		let authorsContainer = doc.querySelector(".title-container .details .authors");
 		authorsContainer.innerHTML = '';
 		let authorsArray = authorsElement.innerHTML.split(",");
@@ -272,11 +277,15 @@ export async function generateFullArticleHtmlPage(pageData, template, parentPage
 			const author = authorsArray[i];
 			authorsContainer.innerHTML += "<li>" + author + "</li>";
 		}		
+
 		eraseDate = false;
 	}
 
-	doc.querySelector(".title-container .details .date").remove();
-	doc.querySelector(".title-container .details .authors").remove();
+	const dateContainer = doc.querySelector(".title-container .details .date");
+	const authorsContainer = doc.querySelector(".title-container .details .authors");
+	
+	if(dateContainer && !dateContainer.innerHTML.trim()) dateContainer.remove();
+	if(authorsContainer && !authorsContainer.innerHTML.trim()) authorsContainer.remove();
 
 	if(doc.querySelector('main .date')) doc.querySelector('main .date').remove();
 	if(doc.querySelector('main .authors')) doc.querySelector('main .authors').remove();

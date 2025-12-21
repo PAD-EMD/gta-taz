@@ -7,6 +7,7 @@ window.ResizeObserver = ResizeObserver;
 
 import 'github-markdown-css';
 import './../styles/style.scss';
+
 import fslightbox from 'fslightbox';
 import DitherJS from 'ditherjs';
 
@@ -93,22 +94,42 @@ window.onload = function() {
 
 	var ditherjs = new DitherJS();
 
+	const activeColorHex = localStorage.getItem('activeColor') || '#7e7e7eff';
+	const activeColorRgb = hexToRgb(activeColorHex);
+    console.log('activeColorRgb =', activeColorRgb)
+
+	const activeBorderColor = {
+		r: Math.min(255, Math.floor(activeColorRgb.r * 4.3)),
+		g: Math.min(255, Math.floor(activeColorRgb.g * 4.3)),
+		b: Math.min(255, Math.floor(activeColorRgb.b * 4.3))
+	};
+
+	document.documentElement.style.setProperty('--activeBorderColor', `rgb(${activeBorderColor.r}, ${activeBorderColor.g}, ${activeBorderColor.b})`);
+
 	let palette = [
-		[0,0,0], 
-		[100,100,100], 
-		[200,200,200]
-		// [255,255,255]
+		[activeColorRgb.r, activeColorRgb.g, activeColorRgb.b],
+		[Math.floor(activeColorRgb.r * 1.8), Math.floor(activeColorRgb.g * 1.8), Math.floor(activeColorRgb.b * 1.8)],
+		[activeBorderColor.r, activeBorderColor.g, activeBorderColor.b],
 	]
 
 	images.forEach(img => {
 		img.parentNode.appendChild(img.cloneNode(true));
 		
 		ditherjs.dither(img, {
-			"step": 2, // The step for the pixel quantization n = 1,2,3...
-			"palette": palette, // an array of colors as rgb arrays
-			"algorithm": "atkinson" // one of ["ordered", "diffusion", "atkinson"]
+			"step": 3,
+			"palette": palette,
+			"algorithm": "ordered"
 		});
 	});
+}
+
+function hexToRgb(hex) {
+	const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+	return result ? {
+		r: parseInt(result[1], 16),
+		g: parseInt(result[2], 16),
+		b: parseInt(result[3], 16)
+	} : { r: 200, g: 200, b: 200 };
 }
 
 

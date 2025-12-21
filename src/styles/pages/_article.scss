@@ -33,6 +33,7 @@
   			flex-direction: column;
 			text-align: justify;
 			margin-top: -1rem;
+			margin-bottom: 3rem;
 
 			h1 {
 				font-size: 5rem;
@@ -58,6 +59,8 @@
 					text-align: right;
 					margin: 0;
 					padding: 0;
+					display: flex;
+					gap: 0.5rem;
 				}
 			}
 		}
@@ -73,6 +76,12 @@
 
 			.link-to-image {
 				cursor: pointer;
+			}
+
+			a{
+				color: var(--active-color);
+				font-weight: bold;
+
 			}
 		}
 	}
@@ -115,7 +124,7 @@
 				z-index: 3;
 				font-size: 2rem;
 				color: var(--active-color);
-				-webkit-text-stroke: 3px rgba(255, 255, 255, 0.233);
+				-webkit-text-stroke: 5px var(--activeBorderColor);
 				paint-order: stroke fill;
 				font-weight: bold;
 			}

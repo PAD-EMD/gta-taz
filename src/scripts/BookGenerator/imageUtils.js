@@ -13,25 +13,39 @@ export async function downloadImage(imageUrl, filename) {
 		return '';
 	}
 
+	const cleanFilename = filename.replace(/[?#&=]/g, '_').replace(/__+/g, '_');
+
+	const isExternalUrl = (imageUrl.startsWith('http://') || imageUrl.startsWith('https://')) 
+		&& !imageUrl.includes(BOOKSTACK_API_URL.replace('/api', ''));
+
 	try {
-		const fullUrl = imageUrl.startsWith('http') ? imageUrl : `${BOOKSTACK_API_URL.replace('/api', '')}${imageUrl}`;
+		let fullUrl;
+		let requestConfig;
+
+		if (isExternalUrl) {
+			fullUrl = imageUrl;
+			requestConfig = { responseType: 'stream' };
+			// console.log(`🔄 Téléchargement image externe: ${fullUrl}`);
+		} else {
+			fullUrl = imageUrl.startsWith('http') ? imageUrl : `${BOOKSTACK_API_URL.replace('/api', '')}${imageUrl}`;
+			requestConfig = {
+				responseType: 'stream',
+				headers: { Authorization: `Token ${BOOKSTACK_TOKEN}` }
+			};
+			// console.log(`🔄 Téléchargement: ${fullUrl}`);
+		}
 		
-		console.log(`🔄 Téléchargement: ${fullUrl}`);
+		const response = await api.get(fullUrl, requestConfig);
 		
-		const response = await api.get(fullUrl, {
-			responseType: 'stream',
-			headers: { Authorization: `Token ${BOOKSTACK_TOKEN}` }
-		});
-		
-		const imagePath = path.join(DIR, 'images', filename);
+		const imagePath = path.join(DIR, 'images', cleanFilename);
 		await streamPipeline(response.data, createWriteStream(imagePath));
 		
-		console.log(`✅ Image téléchargée: ${filename}`);
-		return `/book/images/${filename}`;
+		// console.log(`✅ Image téléchargée: ${cleanFilename}`);
+		return `/book/images/${cleanFilename}`;
 	} catch (error) {
 		console.error(`❌ Erreur téléchargement image: ${imageUrl}`);
 		console.error(`   Détails: ${error.message}`);
-		console.error(`   Fichier: ${filename}`);
+		console.error(`   Fichier: ${cleanFilename}`);
 		return imageUrl;
 	}
 }
