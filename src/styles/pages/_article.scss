@@ -77,6 +77,22 @@
 
 			.link-to-image {
 				cursor: pointer;
+				font-weight: bold;
+			}
+			
+			.wave-letter {
+				display: inline-block;
+				animation: wave 10s ease-in-out infinite;
+			}
+			
+			
+			@keyframes wave {
+				0%, 100% {
+					transform: translateY(0);
+				}
+				50% {
+					transform: translateY(-5px);
+				}
 			}
 
 			a{

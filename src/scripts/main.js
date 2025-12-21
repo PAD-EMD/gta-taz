@@ -15,11 +15,13 @@ import DitherJS from 'ditherjs';
 var lightbox = new FsLightbox();
 
 let scrollableContent = document.querySelector(".left-article-content");
+console.log('scrollableContent =', scrollableContent)
 let imagesContainer = document.querySelector(".rigth-article-content");
 
 let imageLinkTargets = document.querySelectorAll(".link-to-image");
 
 function onScroll() {
+    console.log('imageLinkTargets =', imageLinkTargets)
     if (imageLinkTargets.length === 0) return;
     
     // Trouver l'élément le plus proche du centre
@@ -79,12 +81,20 @@ window.onload = function() {
     }, 500);
 
 	imageLinkTargets = document.querySelectorAll(".link-to-image");
+
 	for (let i = 0; i < imageLinkTargets.length; i++) {
 		const imageLinkTarget = imageLinkTargets[i];
 		
-		imageLinkTarget.innerHTML += " (" + imageLinkTarget.dataset.imageTargetId + ") "
+		const text = imageLinkTarget.textContent;
+		const wrappedText = text.split('').map((char, index) => {
+			if (char === ' ') return ' ';
+			return `<span class="wave-letter" style="animation-delay: ${index * 0.1}s">${char}</span>`;
+		}).join('');
+		
+		imageLinkTarget.innerHTML = wrappedText + " (" + imageLinkTarget.dataset.imageTargetId + ") ";
 
 		imageLinkTarget.addEventListener('click', ()=>{
+            
 		});
 	}
 
