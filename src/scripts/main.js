@@ -1,4 +1,4 @@
-import 'simplebar'; // or "import SimpleBar from 'simplebar';" if you want to use it manually.
+import SimpleBar from 'simplebar';
 import 'simplebar/dist/simplebar.css';
 
 // You will need a ResizeObserver polyfill for browsers that don't support it! (iOS Safari, Edge, ...)
@@ -15,75 +15,75 @@ import DitherJS from 'ditherjs';
 var lightbox = new FsLightbox();
 
 let scrollableContent = document.querySelector(".left-article-content");
-console.log('scrollableContent =', scrollableContent)
 let imagesContainer = document.querySelector(".rigth-article-content");
+const simpleBarImages = new SimpleBar(imagesContainer);
 
-let imageLinkTargets = document.querySelectorAll(".link-to-image");
+let linksToImage = document.querySelectorAll(".link-to-image");
 
-function onScroll() {
-    console.log('imageLinkTargets =', imageLinkTargets)
-    if (imageLinkTargets.length === 0) return;
+// function onScroll() {
+//     console.log('linksToImage =', linksToImage)
+//     if (linksToImage.length === 0) return;
     
-    // Trouver l'élément le plus proche du centre
-    let closestElement = null;
-    let smallestDistance = Infinity;
+//     // Trouver l'élément le plus proche du centre
+//     let closestElement = null;
+//     let smallestDistance = Infinity;
     
-    imageLinkTargets.forEach(el => {
-        const rect = el.getBoundingClientRect();
-        const windowHeight = window.innerHeight || document.documentElement.clientHeight;
-        const screenCenter = windowHeight / 3;
-        const elementCenter = rect.top + rect.height / 2;
-        const distanceToCenter = Math.abs(screenCenter - elementCenter);
+//     linksToImage.forEach(el => {
+//         const rect = el.getBoundingClientRect();
+//         const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+//         const screenCenter = windowHeight / 3;
+//         const elementCenter = rect.top + rect.height / 2;
+//         const distanceToCenter = Math.abs(screenCenter - elementCenter);
         
-        if (distanceToCenter < smallestDistance) {
-            smallestDistance = distanceToCenter;
-            closestElement = el;
-        }
-    });
+//         if (distanceToCenter < smallestDistance) {
+//             smallestDistance = distanceToCenter;
+//             closestElement = el;
+//         }
+//     });
     
-    // Désactiver toutes les images d'abord
-    imageLinkTargets.forEach(el => {
-        let targetImage = imagesContainer.querySelector("#image-" + el.dataset.imageTargetId);
-        if (targetImage) {
-            targetImage.classList.remove('active');
-        }
+//     // Désactiver toutes les images d'abord
+//     linksToImage.forEach(el => {
+//         let targetImage = imagesContainer.querySelector("#image-" + el.dataset.imageTargetId);
+//         if (targetImage) {
+//             targetImage.classList.remove('active');
+//         }
 
-		el.classList.remove('active');
-    });
+// 		el.classList.remove('active');
+//     });
     
-    // Activer uniquement l'image correspondant à l'élément le plus proche
-    if (closestElement && smallestDistance < document.body.offsetHeight) {
-        let targetImage = imagesContainer.querySelector("#image-" + closestElement.dataset.imageTargetId);
+//     // Activer uniquement l'image correspondant à l'élément le plus proche
+//     if (closestElement && smallestDistance < document.body.offsetHeight) {
+//         let targetImage = imagesContainer.querySelector("#image-" + closestElement.dataset.imageTargetId);
         
-        if (targetImage) {
-			closestElement.classList.add('active');
-            targetImage.classList.add('active');
+//         if (targetImage) {
+// 			closestElement.classList.add('active');
+//             targetImage.classList.add('active');
             
-            // Scroll vers cette image dans le container
-            const containerRect = imagesContainer.getBoundingClientRect();
-            const imageRect = targetImage.getBoundingClientRect();
+//             // Scroll vers cette image dans le container
+//             const containerRect = imagesContainer.getBoundingClientRect();
+//             const imageRect = targetImage.getBoundingClientRect();
             
-            const containerCenter = containerRect.height / 2;
-            const imageCenter = imageRect.top - containerRect.top + imageRect.height / 2;
-            const scrollOffset = imageCenter - containerCenter;
+//             const containerCenter = containerRect.height / 2;
+//             const imageCenter = imageRect.top - containerRect.top + imageRect.height / 2;
+//             const scrollOffset = imageCenter - containerCenter;
             
-            imagesContainer.scrollBy({
-                top: scrollOffset,
-                behavior: 'smooth'
-            });
-        }
-    }
-}
+//             imagesContainer.scrollBy({
+//                 top: scrollOffset,
+//                 behavior: 'smooth'
+//             });
+//         }
+//     }
+// }
 
 window.onload = function() {
     setTimeout(() => {
         document.querySelector(".fade-layer").classList.add("hidden");
     }, 500);
 
-	imageLinkTargets = document.querySelectorAll(".link-to-image");
+	linksToImage = document.querySelectorAll(".link-to-image");
 
-	for (let i = 0; i < imageLinkTargets.length; i++) {
-		const imageLinkTarget = imageLinkTargets[i];
+	for (let i = 0; i < linksToImage.length; i++) {
+		const imageLinkTarget = linksToImage[i];
 		
 		const text = imageLinkTarget.textContent;
 		const wrappedText = text.split('').map((char, index) => {
@@ -94,11 +94,23 @@ window.onload = function() {
 		imageLinkTarget.innerHTML = wrappedText + " (" + imageLinkTarget.dataset.imageTargetId + ") ";
 
 		imageLinkTarget.addEventListener('click', ()=>{
-            
+            // right row scroll to the image
+            let imageTarget = imagesContainer.querySelector("#image-" + imageLinkTarget.dataset.imageTargetId);
+            console.log('imageTarget =', imageTarget)
+
+            if(imageTarget){
+                simpleBarImages.getScrollElement().scrollTo({
+                    top: imageTarget.offsetTop - simpleBarImages.getScrollElement().offsetTop - simpleBarImages.getScrollElement().clientHeight / 2 + imageTarget.clientHeight / 2,
+                    behavior: 'smooth'
+                });
+                // imageTarget.parentElement.scrollTo({
+                //     top: imageTarget.offsetTop - imagesContainer.offsetTop - imagesContainer.clientHeight / 2 + imageTarget.clientHeight / 2,
+                //     behavior: 'smooth'
+                // });
+            }
+
 		});
 	}
-
-	scrollableContent.addEventListener('scroll', onScroll);
 	
 	const images = document.querySelectorAll('img');
 

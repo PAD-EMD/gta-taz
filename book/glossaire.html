@@ -182,4 +182,12 @@ Les fichiers .swf contiennent des graphismes, sons, scripts et animations intera
 
 
 
-</body></html>
+<script>
+    // get active color from local storage and set it to css variable
+    const activeColor =
+        localStorage.getItem("activeColor") || "#0F2E84";
+    document.documentElement.style.setProperty(
+        "--active-color",
+        activeColor
+    );
+</script></body></html>

@@ -5,13 +5,29 @@ import { state, DOWNLOAD_IMAGES } from './config.js';
 import { downloadImage, generateNewImage } from './imageUtils.js';
 import { loadSnippet } from './fileUtils.js';
 
+function injectNavSnippet(doc) {
+	const nav = loadSnippet('nav.html');
+	const body = doc.querySelector('body');
+	body.innerHTML = nav + body.innerHTML;
+}
+
+function injectStyleSnippet(doc) {
+	const styleSnippet = loadSnippet('sub-page-style.html');
+	const head = doc.querySelector('head');
+	head.innerHTML = head.innerHTML + styleSnippet;
+}
+function injectFooterSnippet(doc) {
+	const footerSnippet = loadSnippet('footer.html');
+	const body = doc.querySelector('body');
+	body.innerHTML = body.innerHTML + footerSnippet;
+}
+
 export async function generateIndexHtmlPage(template) {
 	const dom = new JSDOM(template);
 	const doc = dom.window.document;
 
-	const headerSnippet = loadSnippet('nav.html');
-	const body = doc.querySelector('body');
-	body.innerHTML = headerSnippet + body.innerHTML;
+	injectNavSnippet(doc);
+	injectFooterSnippet(doc);
 
 	return dom.serialize();
 }
@@ -20,13 +36,9 @@ export async function generateTutorielsPage(template) {
 	const dom = new JSDOM(template);
 	const doc = dom.window.document;
 
-	const headerSnippet = loadSnippet('nav.html');
-	const body = doc.querySelector('body');
-	body.innerHTML = headerSnippet + body.innerHTML;
-
-	const headSnippet = loadSnippet('sub-page-style.html');
-	const head = doc.querySelector('head');
-	head.innerHTML = head.innerHTML + headSnippet;
+	injectNavSnippet(doc);
+	injectStyleSnippet(doc);
+	injectFooterSnippet(doc);
 
 	const tagsContainer = doc.querySelector(".tags-container");
 	const pagesContainer = doc.querySelector(".pages-container");
@@ -68,13 +80,9 @@ export async function generateArticlesPage(template) {
 	const doc = dom.window.document;
 	
 	// get glossaire page in state.pages
-	const headerSnippet = loadSnippet('nav.html');
-	const body = doc.querySelector('body');
-	body.innerHTML = headerSnippet + body.innerHTML;
-
-	const headSnippet = loadSnippet('sub-page-style.html');
-	const head = doc.querySelector('head');
-	head.innerHTML = head.innerHTML + headSnippet;
+	injectNavSnippet(doc);
+	injectStyleSnippet(doc);
+	injectFooterSnippet(doc);
 
 	const articles = state.pages.filter(page => {
 		return page.parent == "Articles"
@@ -106,13 +114,9 @@ export async function generateGlossairePage(template) {
 	const doc = dom.window.document;
 
 	// get glossaire page in state.pages
-	const headerSnippet = loadSnippet('nav.html');
-	const body = doc.querySelector('body');
-	body.innerHTML = headerSnippet + body.innerHTML;
-
-	const headSnippet = loadSnippet('sub-page-style.html');
-	const head = doc.querySelector('head');
-	head.innerHTML = head.innerHTML + headSnippet;
+	injectNavSnippet(doc);
+	injectStyleSnippet(doc);
+	injectFooterSnippet(doc);
 
 	const glossairePages = state.pages.filter(page => page.title == "Glossaire");
 	
@@ -175,15 +179,9 @@ export async function generateFullArticleHtmlPage(pageData, template, parentPage
 	});
 	const doc = dom.window.document;
 	
-	const navSnippet = loadSnippet('nav-small.html');
-	const headSnippet = loadSnippet('sub-page-style.html');
-
-	const head = doc.querySelector('head');
-	head.innerHTML =  head.innerHTML + navSnippet + headSnippet;
-
-	const footerSnippet = loadSnippet('footer.html');
-	const body = doc.querySelector('body');
-	body.innerHTML = body.innerHTML + footerSnippet;
+	injectNavSnippet(doc);
+	injectStyleSnippet(doc);
+	injectFooterSnippet(doc);
 
 	state.pages.push({
 		title: pageData.name,
