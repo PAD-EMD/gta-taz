@@ -35,13 +35,18 @@ export async function generateTutorielsPage(template) {
 		.map(name => state.tags.find(tag => tag.name === name));
 		
 	uniqueTags.forEach(tag => {
+		if(tag.name == "Publique") return; // Skip "Publique" tag
 		const tagElement = doc.createElement('span');
 		tagElement.textContent = tag.name;
 		tagElement.className = 'tag';
 		tagsContainer.appendChild(tagElement);
 	});
 
-	state.pages.forEach(page => {
+	const tutosPages = state.pages.filter(page => {
+		return page.parent == "Tutoriels"
+	});
+
+	tutosPages.forEach(page => {
 		const pageElement = doc.createElement('a');
 		pageElement.setAttribute('href', page.slug + ".html");
 		pageElement.setAttribute('target', '_blank');
@@ -71,8 +76,29 @@ export async function generateArticlesPage(template) {
 	const head = doc.querySelector('head');
 	head.innerHTML = head.innerHTML + headSnippet;
 
-	return dom.serialize();
+	const articles = state.pages.filter(page => {
+		return page.parent == "Articles"
+	});
+	
+	const articlesContainer = doc.querySelector(".pages-container");
 
+	articlesContainer.innerHTML = '';
+
+	const ul = doc.createElement('ul');
+	ul.className = 'pages-list';
+
+	articles.forEach(article => {
+		const li = doc.createElement('li');
+		const link = doc.createElement('a');
+		link.setAttribute('href', article.slug + ".html");
+		link.textContent = article.title;
+		li.appendChild(link);
+		ul.appendChild(li);
+	});
+
+	articlesContainer.appendChild(ul);
+
+	return dom.serialize();
 }
 
 export async function generateGlossairePage(template) {
@@ -122,9 +148,6 @@ export async function generateGlossairePage(template) {
 				strong.parentNode.insertBefore(br, strong.nextSibling);
 			});
 
-			
-
-			
 			ul.appendChild(li);
 		}
 	});
@@ -133,7 +156,6 @@ export async function generateGlossairePage(template) {
 	glossaireArray.sort((a, b) => a.term.localeCompare(b.term));
 
 	fs.writeFileSync('./book/glossaire.json', JSON.stringify(glossaireArray, null, 2), 'utf-8');
-
 
 	glossaireContainer.appendChild(ul);
 
@@ -147,13 +169,13 @@ export async function generateGlossairePage(template) {
  * @param {*} template 
  * @returns 
  */
-export async function generateFullArticleHtmlPage(pageData, template) {
+export async function generateFullArticleHtmlPage(pageData, template, parentPage = null) {
 	const dom = new JSDOM(template, {
 		virtualConsole: new (await import('jsdom')).VirtualConsole()
 	});
 	const doc = dom.window.document;
 	
-	const headerSnippet = loadSnippet('nav.html');
+	const headerSnippet = loadSnippet('nav-small.html');
 	const body = doc.querySelector('body');
 	body.innerHTML = headerSnippet + body.innerHTML;
 
@@ -165,10 +187,8 @@ export async function generateFullArticleHtmlPage(pageData, template) {
 		title: pageData.name,
 		slug: pageData.slug,
 		tags: pageData.tags,
-		parent: pageData.parent || null,
+		parent: parentPage,
 	})
-
-	console.log('pageData.parent =', pageData.parent)
 
 	if(pageData.name === "Glossaire"){
 		state.pages[state.pages.length -1].content = pageData.html;
@@ -185,7 +205,11 @@ export async function generateFullArticleHtmlPage(pageData, template) {
 	const authorsElement = tempDoc.querySelector('.authors');
 	const dateElement = tempDoc.querySelector('.date');
 
+	const leftContent = doc.querySelector('.left-article-content');
+	if (leftContent) leftContent.setAttribute('data-simplebar', '');
+
 	let imageContainer = doc.querySelector('.rigth-article-content')
+	if (imageContainer) imageContainer.setAttribute('data-simplebar', '');
 	imageContainer.innerHTML = '';
 	
 	const titleElement = doc.querySelector('title');

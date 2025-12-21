@@ -25,9 +25,6 @@ export async function generateGlossairePageAndWrite(template) {
 
 export async function generatePageHtml(pageId, pageSlug, template, parentPage = null) {
 	const pageDetail = await fetchPage(pageId);
-	// console.log('pageDetail', pageDetail.tags)
-	pageDetail.tags.push({ name: parentPage, value: parentPage, order: pageDetail.tags.length });
-	
-	const fullHtml = await generateFullArticleHtmlPage(pageDetail, template);
+	const fullHtml = await generateFullArticleHtmlPage(pageDetail, template, parentPage);
 	writeHtmlFile(`${pageSlug}.html`, fullHtml);
 }

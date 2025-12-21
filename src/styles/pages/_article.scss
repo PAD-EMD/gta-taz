@@ -1,26 +1,27 @@
 .article-page {
-	display: flex;
-	align-items: start;
-	justify-content: stretch;
-	flex-direction: row;
-	max-height: 100vh;
-	overflow: hidden;
-
 	nav{
 		position: absolute;
-		right: 2rem; top: 1rem;
+		right: 1.3rem; top: 1rem;
 		min-width: 500px;
 		z-index: 100;
 	}
 
+	.article-container{
+		display: flex;
+		align-items: start;
+		justify-content: stretch;
+		flex-direction: row;
+		max-height: 100vh;
+		overflow: hidden;
+	}
+
 	.left-article-content,
 	.rigth-article-content {
-		max-height: 100vh;
-		overflow: scroll;
+		max-height: calc(100vh - 76px);
 	}
 
 	.left-article-content {
-		padding: 1rem;
+		padding-right: 1rem;
 		width: 55%;
 
 		// @media (max-width: 1250px) {
@@ -28,13 +29,20 @@
 		// }
 
 		header {
+			align-items: stretch;
+  			flex-direction: column;
+			text-align: justify;
+			margin-top: -1rem;
+
 			h1 {
 				font-size: 5rem;
-				margin-top: 1rem;
+				margin-top: 0rem;
 				margin-bottom: 0.3rem;
+				color: var(--active-color);
 			}
 
 			.details {
+				color: var(--active-color);
 				width: 100%;
 				display: flex;
 				flex-direction: row;
@@ -55,7 +63,8 @@
 		}
 
 		main {
-			color: #131415;
+			// color: #131415;
+			color: var(--active-color);
 			background-color: transparent;
 			font-size: 1.6rem;
 			margin-top: 0rem;
@@ -64,20 +73,11 @@
 
 			.link-to-image {
 				cursor: pointer;
-				text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff,
-					0 0 20px #4aff1888, 2px 2px 2px rgba(206, 89, 55, 0);
-
-				&.active {
-					text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff,
-						0 0 20px #49ff18, 0 0 30px #49ff18, 0 0 40px #49ff18,
-						0 0 55px #49ff18, 0 0 75px #49ff18;
-				}
 			}
 		}
 	}
 
 	.rigth-article-content {
-		background-color: gray;
 		width: 45%;
 
 		// @media (max-width: 1250px) {
@@ -86,6 +86,7 @@
 
 		img {
 			width: 100%;
+			margin-bottom: 1rem;
 		}
 
 		.image {
@@ -113,10 +114,10 @@
 				top: 1rem;
 				z-index: 3;
 				font-size: 2rem;
-				text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff,
-					0 0 20px #49ff18, 0 0 30px #49ff18, 0 0 40px #49ff18,
-					0 0 55px #49ff18, 0 0 75px #49ff18;
-				color: black;
+				color: var(--active-color);
+				-webkit-text-stroke: 3px rgba(255, 255, 255, 0.233);
+				paint-order: stroke fill;
+				font-weight: bold;
 			}
 		}
 	}

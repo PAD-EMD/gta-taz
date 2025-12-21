@@ -16,22 +16,24 @@ async function pullBook() {
 	generateGlossairePageAndWrite(glossaireTemplate);
 
 	for (const page of pages) {
-		if(page.id === 7) continue; // Glossaire déjà généré
-		await generatePageHtml(page.id, page.slug, template);
-		
 		if(page.pages && page.pages.length){
 			for (const subPage of page.pages) {
 				await generatePageHtml(subPage.id, subPage.slug, template, page.name);
 			}
 		}
+		// else{
+			// if(page.id === 7) continue; // Glossaire déjà généré
+			// await generatePageHtml(page.id, page.slug, template);
+		// }
 	}
 
-	// const indexTemplate = loadTemplate('index.html');
-	// generateIndexPage(indexTemplate);
+	const indexTemplate = loadTemplate('index.html');
+	generateIndexPage(indexTemplate);
 
 	const articlesTemplate = loadTemplate('articles.html');
 	generateArticlesPageAndWrite(articlesTemplate);
-	// generateTutorielsPageAndWrite(articlesTemplate);
+	
+	generateTutorielsPageAndWrite(articlesTemplate);
 
 	console.log('✅ Documentation exportée');
 }
